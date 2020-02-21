@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color = 'warning'>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-tabs>
+
+    <ion-tab-bar slot="bottom" color = 'dark'>
+      <ion-tab-button tab="feed">
+        <ion-icon name="flash"></ion-icon>
+        <ion-label>Feed</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="messages">
+        <ion-icon name="send"></ion-icon>
+        <ion-label>Messages</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="notifications">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-label>Notifications</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="settings">
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>Settings</ion-label>   
+      </ion-tab-button>
+    </ion-tab-bar>
+  
+</ion-tabs>
+
+<ion-content>
+  <ion-card>
+    <img src = 'assets/images/kfh6.png' alt="kasi logo"/>
+  </ion-card>
+  <ion-card>
+    <ion-card-title>Resturants</ion-card-title>
+    <img src = 'https://cdn.primedia.co.za/primedia-broadcasting/image/upload/v1488364912/qjwnidvakslcmh6rbp62.jpg' >
+    <ion-button expand="block" color = 'success'  (click)="gotoRest()">View all Restaurant</ion-button>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-title>Daily Deals</ion-card-title>
+    <ion-slides>
+      <ion-slide>
+        <ion-card>
+          <img
+            src='https://b.zmtcdn.com/data/menus/848/18370848/30be3612e24e3ecaaaec87fb2165422a.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A'>
+        </ion-card>
+      </ion-slide>
+      
+      <ion-slide>
+        <ion-card>
+          <img src='https://www.findtakeaways.co.za/images/Specials/Chesa_Nyama_Family_Special.JPG'>
+        </ion-card>
+      </ion-slide>
+  
+      <ion-slide>
+        <ion-card>
+          <img src=''>
+        </ion-card>
+      </ion-slide>
+ 
+      <ion-slide>
+        <ion-card>
+          <img src=''>
+        </ion-card>
+     
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <img src=''>
+        </ion-card>
+      </ion-slide>
+    
+      <ion-slide>
+        <ion-card>
+          <img src=''>
+        </ion-card>
+      </ion-slide>
+   
+    
+  </ion-slides>
+   
+</ion-card>
+</ion-content>
