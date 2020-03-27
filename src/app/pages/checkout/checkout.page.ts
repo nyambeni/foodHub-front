@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { empty } from 'rxjs';
-import { ReactiveFormsModule, FormBuilder, FormControl, Validators} from '@angular/forms'
+import { ReactiveFormsModule, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {Location } from '@angular/common';
 
 @Component({
   selector: 'app-checkout',
@@ -63,7 +64,7 @@ export class CheckoutPage implements OnInit {
   toggleDisplayNot(){
     this.isDisplay = false;
   }
-  constructor(private router: Router, private formBuilder: FormBuilder/**/) {
+  constructor(private router: Router, private formBuilder: FormBuilder/**/, private location: Location) {
     
    
 
@@ -83,5 +84,8 @@ export class CheckoutPage implements OnInit {
   home(){
     this.router.navigate(['home']);
   }
-
+//back button
+back(){
+  this.location.back();
+}
 }

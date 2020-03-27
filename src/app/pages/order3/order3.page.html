@@ -1,6 +1,21 @@
-
+<script src="cordova.js"></script>
+<body>
+ <!--<ion-backdrop data-backdrop="static"></ion-backdrop>-->
   <ion-header>
-    <ion-toolbar color="primary">
+
+    <ion-toolbar color="warning">
+
+
+<<<<<<< HEAD
+=======
+      <!-- <ion-icon name="menu" (click)="presentActionSheet()"></ion-icon> -->
+<!-- >>>>>>> 83fdc24b6241fe28dcbe71e2e921cbf5b3b33c0c -->
+
+
+      <ion-icon name="arrow-back" (click)="backButton()"></ion-icon>
+
+>>>>>>> a3d6e2fca4b55626cc0020150470910a4374dc2a
+
       <ion-title>Order</ion-title>
     </ion-toolbar>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
@@ -8,7 +23,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
   </ion-header>
   
-  <ion-content>
+  <ion-content ng-controller="ComponentesJSCtrl as cc">
+
+  
+
     <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openCart()" #cart>
       <div class="cart-length">{{cartItemCount | async}}</div>
@@ -35,7 +53,8 @@
        <ion-row>
         <ion-img class="logo" src="assets/images/logo3.png" alt=""></ion-img>
        </ion-row>
-     <ion-card color="" *ngFor="let p of prod">
+
+     <ion-card ng-click="cc.onShowBack" (click)="exProduct(p)" (click)="openExtras()" color="" *ngFor="let p of prod">
       <ion-card-header>
         <ion-card-title>{{ p.name}}</ion-card-title>
       </ion-card-header>
@@ -46,12 +65,12 @@
               <b>{{p.price | currency:'R'}}</b>
             </ion-label>
           </ion-col>
-          <ion-col size="4" class="ion-text-right">
+          <!--<ion-col size="4" class="ion-text-right">
             <ion-button (click)="addToCart(p)">add</ion-button>
-          </ion-col>
+          </ion-col>-->
         </ion-row>
       </ion-card-content>
-    </ion-card>
+     </ion-card>
     
     
     <ion-grid>
@@ -78,4 +97,4 @@
     </ion-grid>
   </ion-list>
   </ion-content>
-  
+</body>

@@ -1,0 +1,139 @@
+<!--ion-header>
+  <ion-toolbar color = "dark">
+    <ion-title>Vendor Admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div class="nav">
+        <div class="menu">
+            <ul>
+                <li><a href="/profile">My Profile</a></li>
+                <li><a href="/">Previous Orders</a></li>
+                <li><a href="/add-menu">Add MENU</a></li>
+                <li><a href="/overview">Monthly Overview</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+      <ion-list>
+        <ion-row>
+         <ion-img class="logo" src="assets/images/logo4.jpeg" alt=""></ion-img>
+        </ion-row>
+      </ion-list>
+
+      <ion-card>
+        <ion-card-header>ORDERS</ion-card-header>
+        <ion-card-content>
+          <table class="table table-bordered" color="danger">
+            <thead>
+              <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Order Description</th>
+                <th scope="col">Order Status</th>
+                <th scope="col">Order Update</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Spathlo #23</td>
+                <td>Preparing...</td>
+                <td><button type="button" class="btn btn-primary">Update Status</button></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Spathlo #77</td>
+                <td>Preparing...</td>
+                <td><button type="button" class="btn btn-primary">Update Status</button></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Spathlo #01</td>
+                <td>Ready</td>
+                <td><button type="button" class="btn btn-primary">Update Status</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </ion-card-content>
+      </ion-card>
+  
+  <<ion-router-outlet id="main"></ion-router-outlet>>
+
+
+
+</ion-content-->
+<ion-header>
+  <ion-toolbar color = "dark" >
+    <ion-title>
+      Restaurant Admin
+    </ion-title>
+    
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>      
+    </ion-buttons>
+
+    <ion-buttons collapse="true" slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color = "dark">
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+  <!-- <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="dark">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item href="/profile">Profile</ion-item>
+        <ion-item href="/add-menu">Add/ Create Menu</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet> -->
+
+
+
+  <div class="ion-padding">
+    <ion-card color = "light">
+      <ion-card-header>
+        Menu Item Demands per month
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color = "light">
+      <ion-card-header>
+        Head to Head comparisons
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color = "light">
+      <ion-card-header>
+        Annual Business Performance
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+ </ion-content>
+

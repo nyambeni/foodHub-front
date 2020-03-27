@@ -5,6 +5,11 @@ import { CartService } from 'src/app/services/cart.service';
 import { ModalController } from '@ionic/angular';
 import { CartModalPage } from '../cart-modal/cart-modal.page';
 
+import { ExtrasPage } from '../extras/extras.page';
+
+import { Location } from '@angular/common';
+
+
 @Component({
   selector: 'app-order2',
   templateUrl: './order2.page.html',
@@ -18,7 +23,7 @@ export class Order2Page implements OnInit {
 
   @ViewChild('cart',{static:false,read: ElementRef})fab: ElementRef;
 
-  constructor(private cartService: CartService, private modalCtrl: ModalController) { }
+  constructor(private cartService: CartService, private modalCtrl: ModalController, private location: Location) { }
 
   ngOnInit() {
     this.product = this.cartService.getProduct();
@@ -29,6 +34,9 @@ export class Order2Page implements OnInit {
   addToCart(product){
     this.animateCSS('tada');
     this.cartService.addProduct(product);
+  }
+  exProduct(product){
+    this.cartService.extraProd(product);
   }
   async openCart(){
     this.animateCSS('bounceOutLeft',true);
@@ -41,6 +49,15 @@ export class Order2Page implements OnInit {
       this.animateCSS('bounceLeft');
     });
     modal.present();
+  }
+
+  async openExtras(){
+    let modal = await this.modalCtrl.create({
+      component: ExtrasPage,
+      cssClass: 'extras'
+    });
+    modal.present();
+    
   }
 
   animateCSS(animationName, keepAnimated = false){
@@ -56,5 +73,9 @@ export class Order2Page implements OnInit {
     node.addEventListener('animationend',handleAnimationEnd)
   }
 
+//back button
+backButton(){
+  this.location.back();
+ }
 
 }

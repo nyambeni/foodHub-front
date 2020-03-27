@@ -20,4 +20,8 @@ export class SignupPage implements OnInit {
   {
     this.rout.navigateByUrl('/singupcust');
   }
+  driverSignup()
+  {
+    this.rout.navigateByUrl('');
+  }
 }

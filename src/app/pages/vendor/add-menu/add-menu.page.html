@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color = 'dark'>
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color = "dark">
+  
+  <ion-card>
+    <ion-card-header>Add Product</ion-card-header>
+    <ion-card-content>
+      <form>
+        <ion-item>
+          <ion-label position="floating">Product Name</ion-label>
+          <ion-input type='text'></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Product Description</ion-label>
+          <ion-input type='text'></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Price R</ion-label>
+          <ion-input type='number'></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Image</ion-label>
+          <label class="control-label small" for="file_img">(jpg/png):</label> <input type="file" name="file_img">
+        </ion-item>
+        <ion-item>
+          <ion-button>Add to menu</ion-button>
+        </ion-item>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

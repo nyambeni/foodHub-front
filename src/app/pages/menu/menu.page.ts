@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { Router, RouterEvent } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-menu',
@@ -8,21 +11,31 @@ import { MenuController } from '@ionic/angular';
 })
 export class MenuPage implements OnInit {
 
-  constructor(private menu: MenuController) { }
+  pages= [
+
+    {
+      title:'Home',
+      url: '/menu/home',
+      icon:'home'
+    },
+    {
+       title: 'Sign Up',
+       url: '/menu/signup',
+       icon:'login'
+    }
+  ]
+  selectedPath = '';
+
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: RouterEvent) =>{
+      this.selectedPath = event.url;
+    })
+   }
 
   ngOnInit() {
+    
   }
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
-  }
-    openEnd() {
-      this.menu.open('end');
-    }
-  
-    openCustom() {
-      this.menu.enable(true, 'custom');
-      this.menu.open('custom');
-    }
 
+    
 }

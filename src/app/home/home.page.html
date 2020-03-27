@@ -1,87 +1,109 @@
 <ion-header>
   <ion-toolbar color = 'warning'>
-    <ion-title>home</ion-title>
+    <div class="header ">
+    <ion-icon name="menu" (click)="presentActionSheet()"></ion-icon> <br>
+    <a href="/home">home</a>
+    <a href="/restaurant">home</a>
+    <a href="/signin">SignIn</a>
+  </div>
+    <!--ion-avatar>
+    <img src="assets/images/kfh6.png" alt="logo" />
+  </ion-avatar-->
+      <ion-title>Kasi Food Hub</ion-title>
+      <ion-searchbar [(ngModel)] = "searchTerm" (ionInput)= "setFilteredItems()"></ion-searchbar>
+    
+    
   </ion-toolbar>
 </ion-header>
 
-<ion-tabs>
+<ion-content padding class="content-color">
+  <ion-list>
+    <ion-item *ngFor="let data of jsonData">
+        {{data.name}}
+    </ion-item>
+   </ion-list>
 
-    <ion-tab-bar slot="bottom" color = 'dark'>
-      <ion-tab-button tab="feed">
-        <ion-icon name="flash"></ion-icon>
-        <ion-label>Feed</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="messages">
-        <ion-icon name="send"></ion-icon>
-        <ion-label>Messages</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="notifications">
-        <ion-icon name="notifications"></ion-icon>
-        <ion-label>Notifications</ion-label>
-      </ion-tab-button>
+  <!--ion-card class="card-body"-->
+    
+    <!--this is the slides you will see on the home page-->
+    <ion-slides  pager #mySlider1 class="slides" (ionSlidesDidLoad)="slidesDidLoad(mySlider1)">
 
-      <ion-tab-button tab="settings">
-        <ion-icon name="settings"></ion-icon>
-        <ion-label>Settings</ion-label>   
-      </ion-tab-button>
-    </ion-tab-bar>
-  
-</ion-tabs>
-
-<ion-content>
-  <ion-card>
-    <img src = 'assets/images/kfh6.png' alt="kasi logo"/>
-  </ion-card>
-  <ion-card>
+      <ion-slide >
+        <img src = 'assets/images/kfh6.png'  class="pics" alt="kasi logo"/>
+        
+      </ion-slide>
+    
+      <ion-slide>
+        <img src = 'assets/images/Advertisement/ad2.jpg' class="pics" alt="kasi logo"/>
+        
+      </ion-slide>
+    
+      <ion-slide >
+        <img src = 'assets/images/Advertisement/menatlana.jpg' class="pics" alt="kasi logo"/>
+        
+      </ion-slide>
+      <ion-slide >
+        <img src = 'https://specsonline.com/wp-content/uploads/2019/01/Mobile-Deli-Page-Slider-600x200.jpg' class="pics" alt="kasi logo"/>
+        
+      </ion-slide>
+      <ion-slide >
+        <img src = 'https://www.findtakeaways.co.za/images/Specials/Chesa_Nyama_Family_Special.JPG'class="pics" alt="kasi logo"/>
+        
+      </ion-slide>
+    
+    </ion-slides>
+  <!--/ion-card-->
+   <div  *ngFor = "let a of adminData">
+       <ion-title>{{a.id}}</ion-title>
+   </div>
+  <!--Restaurants picture with the view button-->
+  <ion-card class="card-body">
     <ion-card-title>Resturants</ion-card-title>
-    <img src = 'https://cdn.primedia.co.za/primedia-broadcasting/image/upload/v1488364912/qjwnidvakslcmh6rbp62.jpg' >
+    <img src = 'https://cdn.primedia.co.za/primedia-broadcasting/image/upload/v1488364912/qjwnidvakslcmh6rbp62.jpg'>
     <ion-button expand="block" color = 'success'  (click)="gotoRest()">View all Restaurant</ion-button>
   </ion-card>
-  
-  <ion-card>
+
+
+  <!--testing the admin -->
+ <div *ngFor="let a of adminData">
+   <ion-title >{{a.system_id}}</ion-title>
+ </div>
+
+
+  <!--Daily Deals ,where you will see the advertisement and also special from the restaurant-->
+  <ion-card class="card-body">
     <ion-card-title>Daily Deals</ion-card-title>
-    <ion-slides>
-      <ion-slide>
-        <ion-card>
-          <img
-            src='https://b.zmtcdn.com/data/menus/848/18370848/30be3612e24e3ecaaaec87fb2165422a.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A'>
+    <ion-slides pager #mySlider class="slides" (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
+      <ion-slide style="background-color: grey" >
+        <ion-card >
+          <img src='https://specsonline.com/wp-content/uploads/2019/01/Mobile-Deli-Page-Slider-600x200.jpg'>
         </ion-card>
       </ion-slide>
       
-      <ion-slide>
+      <ion-slide style="background-color: grey">
         <ion-card>
           <img src='https://www.findtakeaways.co.za/images/Specials/Chesa_Nyama_Family_Special.JPG'>
         </ion-card>
       </ion-slide>
-  
-      <ion-slide>
-        <ion-card>
-          <img src=''>
+
+      <ion-slide style="background-color: grey" >
+        <ion-card >
+          <img src='assets/images/Advertisement/ad2.jpg'>
         </ion-card>
       </ion-slide>
- 
-      <ion-slide>
-        <ion-card>
-          <img src=''>
-        </ion-card>
-     
-      </ion-slide>
-      <ion-slide>
-        <ion-card>
-          <img src=''>
+
+      <ion-slide style="background-color: grey" >
+        <ion-card >
+          <img src='assets/images/Advertisement/menatlana.jpg'>
         </ion-card>
       </ion-slide>
-    
-      <ion-slide>
-        <ion-card>
-          <img src=''>
+
+      <ion-slide style="background-color: grey" >
+        <ion-card >
+          <img src='https://specsonline.com/wp-content/uploads/2019/01/Mobile-Deli-Page-Slider-600x200.jpg'>
         </ion-card>
       </ion-slide>
-   
-    
-  </ion-slides>
-   
+
+    </ion-slides>   
 </ion-card>
 </ion-content>

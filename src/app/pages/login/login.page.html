@@ -1,5 +1,7 @@
 <ion-header>
   <ion-toolbar color = 'warning'>
+    <ion-icon class="menu"></ion-icon>
+    
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,10 +12,19 @@
   <h1>Sign In</h1>
   </div>
   <form>
+    <ion-avatar item-start>
+      <img src="img/avatar-finn.png">
+    </ion-avatar>
     <ion-list>
       <ion-item>
+        <ion-avatar item-end>
+          <img src="">
+        </ion-avatar>
         <ion-label position = "stacked">Username</ion-label>
-        <ion-input type = 'text'></ion-input>
+        <ion-input ngModel #username ="ngModel" [(ngModel)]="username" type = 'text' required min = 0 max = 15></ion-input>
+        <div *ngIf="username.touched && !username.valid">
+          <div *ngIf="username.errors.min">username is required</div>
+        </div>
       </ion-item>
 
       <ion-item>
