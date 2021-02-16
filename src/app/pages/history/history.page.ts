@@ -18,18 +18,16 @@ export class HistoryPage implements OnInit {
   constructor(private cartService: CartService, private modalCtrl: ModalController) { }
 
   ngOnInit() {
-    this.employe = this.cartService.getEmploye();
-    this.cart = this.cartService.getCart();
-    this.cartItemCount = this.cartService.getCartItemCount();
+
   }
 
-  addToCart(product){
+  addToCart(product) {
     this.cartService.addProduct(product);
   }
-  
 
-  async openCart(){
-    let modal = await this.modalCtrl.create({
+
+  async openCart() {
+    const modal = await this.modalCtrl.create({
       component: CartModalPage,
       cssClass: 'cart-modal'
     });

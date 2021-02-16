@@ -4,6 +4,9 @@ import { Chart } from 'chart.js';
 import { MenuController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { ProfilePage} from '../vendor/profile/profile.page';
+import { Router, ActivatedRoute} from '@angular/router';
+import {PostProvider } from '../../../providers/post-provider';
+
 
 @Component({
   selector: 'app-vendor-admin',
@@ -15,12 +18,24 @@ export class VendorAdminPage implements OnInit {
   @ViewChild('doughnutCanvas',  { static: true }) doughnutCanvas: ElementRef;
   @ViewChild('lineCanvas',  { static: true }) lineCanvas: ElementRef;
 
+  // tslint:disable-next-line: variable-name
+  item_name = '';
   private barChart: Chart;
   private doughnutChart: Chart;
   private lineChart: Chart;
-  constructor(private menu: MenuController, private modalCtrl: ModalController) { }
-  
+  constructor(private menu: MenuController, private modalCtrl: ModalController, private router: Router,
+              private postPvdr: PostProvider,
+              private actRoute: ActivatedRoute, ) { }
+
   ngOnInit() {
+
+    this.actRoute.params.subscribe((data: any) => {
+
+      this.item_name = data.name;
+
+      console.log(data);
+    });
+
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: 'bar',
       data: {
@@ -116,6 +131,22 @@ export class VendorAdminPage implements OnInit {
     });
   }
 
+  createdProses() {
+    return new Promise(resolve => {
+
+      const body = {
+
+        aksi: 'add-chart',
+        item_name : this.item_name,
+
+      };
+      this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+        console.log('submit works');
+      });
+
+    });
+
+  }
 
   // testing for menubar
   openFirst() {

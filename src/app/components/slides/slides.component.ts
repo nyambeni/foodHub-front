@@ -9,7 +9,7 @@ export class SlidesComponent implements OnInit {
 
   slideOpts = {
     initialSlide: 0,
-    speed: 400
+    speed: 100
   };
 
   constructor() { }

@@ -48,7 +48,7 @@ export class CheckoutPage implements OnInit {
       {type: 'pattern',message: 'Please enter a valid zip code'},
      ],
   }
-  
+
   addressForm = this.formBuilder.group({
     house: ['',[Validators.required, Validators.maxLength(10)]],
     street: ['',[Validators.required, Validators.maxLength(100)]],
@@ -58,15 +58,15 @@ export class CheckoutPage implements OnInit {
   });
 */
   isDisplay = true;
-  toggleDisplay(){
+  toggleDisplay() {
     this.isDisplay = true;
   }
-  toggleDisplayNot(){
+  toggleDisplayNot() {
     this.isDisplay = false;
   }
   constructor(private router: Router, private formBuilder: FormBuilder/**/, private location: Location) {
-    
-   
+
+
 
   /* public submit(){
      console.log(this.addressForm.value);*/
@@ -75,17 +75,21 @@ export class CheckoutPage implements OnInit {
   ngOnInit() {
   }
 
-  order(){
-    document.getElementById("name").innerHTML="Order SUCCESSFUL";
-    (<HTMLInputElement> document.getElementById("submit")).disabled = true;
+  order() {
+
+    document.getElementById('name').innerHTML = 'Order SUCCESSFUL';
+    (document.getElementById('submit') as HTMLInputElement).disabled = true;
     //
+    this.router.navigateByUrl('payments');
+
   }
 
-  home(){
+  home() {
     this.router.navigate(['home']);
   }
-//back button
-back(){
+// back button
+back() {
   this.location.back();
 }
 }
+

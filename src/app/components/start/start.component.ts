@@ -12,7 +12,7 @@ export class StartComponent implements OnInit {
 
   ngOnInit() {}
 
-  navigateToLoginPage() {
+  navigateToHomePage() {
     this.router.navigateByUrl('/home');
   }
 

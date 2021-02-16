@@ -1,109 +1,226 @@
-<ion-header>
-  <ion-toolbar color = 'warning'>
-    <div class="header ">
-    <ion-icon name="menu" (click)="presentActionSheet()"></ion-icon> <br>
-    <a href="/home">home</a>
-    <a href="/restaurant">home</a>
-    <a href="/signin">SignIn</a>
-  </div>
-    <!--ion-avatar>
-    <img src="assets/images/kfh6.png" alt="logo" />
-  </ion-avatar-->
-      <ion-title>Kasi Food Hub</ion-title>
-      <ion-searchbar [(ngModel)] = "searchTerm" (ionInput)= "setFilteredItems()"></ion-searchbar>
-    
+<ion-header> 
+  <ion-toolbar color = "warning" >
+    <ion-col>
+      <ion-icon name="menu-sharp" size="large"(click)="presentActionSheet()"></ion-icon>
+    </ion-col>
+
+    <ion-title>
+      Kasi Food Hub
+    </ion-title>
     
   </ion-toolbar>
+      
+  <ion-searchbar [(ngModel)] = "searchTerm"></ion-searchbar>
+
 </ion-header>
 
-<ion-content padding class="content-color">
-  <ion-list>
-    <ion-item *ngFor="let data of jsonData">
-        {{data.name}}
-    </ion-item>
-   </ion-list>
+<ion-content class = "card-background-page">
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content> 
+  </ion-refresher>
 
-  <!--ion-card class="card-body"-->
-    
-    <!--this is the slides you will see on the home page-->
-    <ion-slides  pager #mySlider1 class="slides" (ionSlidesDidLoad)="slidesDidLoad(mySlider1)">
-
-      <ion-slide >
-        <img src = 'assets/images/kfh6.png'  class="pics" alt="kasi logo"/>
-        
-      </ion-slide>
-    
-      <ion-slide>
-        <img src = 'assets/images/Advertisement/ad2.jpg' class="pics" alt="kasi logo"/>
-        
-      </ion-slide>
-    
-      <ion-slide >
-        <img src = 'assets/images/Advertisement/menatlana.jpg' class="pics" alt="kasi logo"/>
-        
-      </ion-slide>
-      <ion-slide >
-        <img src = 'https://specsonline.com/wp-content/uploads/2019/01/Mobile-Deli-Page-Slider-600x200.jpg' class="pics" alt="kasi logo"/>
-        
-      </ion-slide>
-      <ion-slide >
-        <img src = 'https://www.findtakeaways.co.za/images/Specials/Chesa_Nyama_Family_Special.JPG'class="pics" alt="kasi logo"/>
-        
-      </ion-slide>
-    
-    </ion-slides>
-  <!--/ion-card-->
-   <div  *ngFor = "let a of adminData">
-       <ion-title>{{a.id}}</ion-title>
-   </div>
   <!--Restaurants picture with the view button-->
-  <ion-card class="card-body">
-    <ion-card-title>Resturants</ion-card-title>
-    <img src = 'https://cdn.primedia.co.za/primedia-broadcasting/image/upload/v1488364912/qjwnidvakslcmh6rbp62.jpg'>
-    <ion-button expand="block" color = 'success'  (click)="gotoRest()">View all Restaurant</ion-button>
+  <ion-card class="card">
+    <ion-card-title>Restaurants</ion-card-title>
+    <ion-card-content>
+
+      <ion-grid fixed>
+        <ion-row> <!--This is just one row with mulitiple columns-->
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img class = "back-image" src="/assets/images/logo2.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Mamas Kitchen</ion-card-title>
+                <p>Delicious Dish</p>
+              </ion-card-content>
+              
+            </ion-card>
+          </ion-col>
+
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoVendorMenu2()" >
+              <ion-img class = "back-image" src="/assets/images/logo.png"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Nkukhu Box</ion-card-title>
+                <p>Come join the fun</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+       
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoVendorMenu3()">
+              <ion-img class = "back-image" src="/assets/images/food1.png"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Rata nama</ion-card-title>
+                <p>Monate wa nama</p>
+              </ion-card-content>
+              
+            </ion-card>
+           
+          </ion-col>
+
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img src="/assets/images/food2.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Ashley's grilled Chicken</ion-card-title>
+                <p>SA's best chicken grillers</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row> <!--This is just one row with mulitiple columns-->
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img src="/assets/images/food3.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Dipitseng</ion-card-title>
+                <p>Delicious Dish</p>
+              </ion-card-content>
+              
+            </ion-card>
+          </ion-col>
+
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img class = "back-image" src="/assets/images/food4.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Leplankeng</ion-card-title>
+                <p>Mouth watering dishes</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+       
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img class = "back-image" src="/assets/images/food5.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Kota Palace</ion-card-title>
+                <p>kota masters</p>
+              </ion-card-content>
+              
+            </ion-card>
+           
+          </ion-col>
+
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img class = "back-image" src="/assets/images/food6.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Chesa nyama</ion-card-title>
+                <p>steak masters</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row> <!--This is just one row with mulitiple columns-->
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img class = "back-image" src="/assets/images/kota.png"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Fero's grilled chicken</ion-card-title>
+                <p>Delicious Dish</p>
+              </ion-card-content>
+              
+            </ion-card>
+          </ion-col>
+
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img class = "back-image" src="/assets/images/kota1.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Mamas Kitchen</ion-card-title>
+                <p>Delicious Dish</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+       
+       
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img class = "back-image" src="/assets/images/kota2.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Mamas Kitchen</ion-card-title>
+                <p>Delicious Dish</p>
+              </ion-card-content>
+              
+            </ion-card>
+           
+          </ion-col>
+
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img class = "back-image" src="/assets/images/kota3.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Mamas Kitchen</ion-card-title>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elitme. Ab aspernatur, id suscipit dolorem tenetur possimus.</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row> <!--This is just one row with mulitiple columns-->
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img class = "back-image" src="/assets/images/kota4.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Mamas Kitchen</ion-card-title>
+                <p>Delicious Dish</p>
+              </ion-card-content>
+              
+            </ion-card>
+          </ion-col>
+
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img src="/assets/images/kota5.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Mamas Kitchen</ion-card-title>
+                <p>Delicious Dish</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+       
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img src="/assets/images/logo2.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Mamas Kitchen</ion-card-title>
+                <p>Delicious Dish</p>
+              </ion-card-content>
+              
+            </ion-card >
+           
+          </ion-col>
+
+          <ion-col size=12 size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let item of [1]; let i = index">
+            <ion-card (click)="gotoMenu1()">
+              <ion-img src="/assets/images/food6.jpg"></ion-img>
+              <ion-card-content>
+                <ion-card-title>Mamas Kitchen</ion-card-title>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elitme. Ab aspernatur, id suscipit dolorem tenetur possimus.</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+        </ion-row>
+
+      </ion-grid>
+
+    </ion-card-content>
   </ion-card>
 
+    <!-- Data to display after skeleton screen -->
 
-  <!--testing the admin -->
- <div *ngFor="let a of adminData">
-   <ion-title >{{a.system_id}}</ion-title>
- </div>
-
-
-  <!--Daily Deals ,where you will see the advertisement and also special from the restaurant-->
-  <ion-card class="card-body">
-    <ion-card-title>Daily Deals</ion-card-title>
-    <ion-slides pager #mySlider class="slides" (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
-      <ion-slide style="background-color: grey" >
-        <ion-card >
-          <img src='https://specsonline.com/wp-content/uploads/2019/01/Mobile-Deli-Page-Slider-600x200.jpg'>
-        </ion-card>
-      </ion-slide>
-      
-      <ion-slide style="background-color: grey">
-        <ion-card>
-          <img src='https://www.findtakeaways.co.za/images/Specials/Chesa_Nyama_Family_Special.JPG'>
-        </ion-card>
-      </ion-slide>
-
-      <ion-slide style="background-color: grey" >
-        <ion-card >
-          <img src='assets/images/Advertisement/ad2.jpg'>
-        </ion-card>
-      </ion-slide>
-
-      <ion-slide style="background-color: grey" >
-        <ion-card >
-          <img src='assets/images/Advertisement/menatlana.jpg'>
-        </ion-card>
-      </ion-slide>
-
-      <ion-slide style="background-color: grey" >
-        <ion-card >
-          <img src='https://specsonline.com/wp-content/uploads/2019/01/Mobile-Deli-Page-Slider-600x200.jpg'>
-        </ion-card>
-      </ion-slide>
-
-    </ion-slides>   
-</ion-card>
-</ion-content>
+ </ion-content>

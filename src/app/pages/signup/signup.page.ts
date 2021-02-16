@@ -12,16 +12,13 @@ export class SignupPage implements OnInit {
 
   ngOnInit() {
   }
-  adminSignUp()
-  {
-    this.rout.navigateByUrl('/singupadmin');
+  adminSignUp() {
+    this.rout.navigateByUrl('/signupadmin');
   }
-  custSignUp()
-  {
+  custSignUp() {
     this.rout.navigateByUrl('/singupcust');
   }
-  driverSignup()
-  {
+  driverSignup() {
     this.rout.navigateByUrl('');
   }
 }

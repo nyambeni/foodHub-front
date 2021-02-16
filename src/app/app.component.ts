@@ -9,6 +9,9 @@ import { OverviewPage} from './pages/vendor/overview/overview.page';
 import { from } from 'rxjs';
 import { AuthenticationService } from './services/authentication.service';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { NavController } from '@ionic/angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -21,6 +24,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar, private modalCtrl: ModalController,
    // private authenticationService: AuthenticationService
+    private storage: Storage,
+    public navCtrl: NavController,
   ) {
     this.initializeApp();
   }
@@ -38,11 +43,19 @@ export class AppComponent {
           this.router.navigate(['signin']);
         }
       });*/
+      this.storage.get('storage_xxx').then((res) => {
+        if (res == null) {
+          // tslint:disable-next-line: no-unused-expression
+          this.navCtrl.navigateRoot('');
+        } else {
+
+        }
+      });
     });
   }
- 
-   async openProfile(){
-     let modal = await this.modalCtrl.create({
+
+   async openProfile() {
+     const modal = await this.modalCtrl.create({
        component: ProfilePage,
        cssClass: 'profile'
      });
@@ -63,5 +76,5 @@ export class AppComponent {
     });
     modal.present();
   }
- 
+
 }

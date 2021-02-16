@@ -72,8 +72,8 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-label>Eft</ion-label>
-              <ion-radio disabled value="Eft"></ion-radio>
+              <ion-label>Card</ion-label>
+              <ion-radio checked value="Eft"></ion-radio>
             </ion-col>
             <ion-col>
               <ion-label>Cash</ion-label>
@@ -89,6 +89,9 @@
   </ion-item>
   
 
-  <ion-button [disabled]="!addressForm.valid" type="submit" id="submit" (click)="order()">Place Order</ion-button>
+  <ion-button [disabled]="!addressForm.valid" type="submit" id="submit" (click)="order()">Confirm Payment</ion-button>
   
 </ion-content>
+
+// pushing to reset S.o.S
+

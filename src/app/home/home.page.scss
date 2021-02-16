@@ -1,3 +1,4 @@
+
 .masters{
     background-color: orange;
 }
@@ -6,24 +7,13 @@
     background-color: black;
 }
 
-ion-content{
-   --background: lightblue;
-    //--background-image: url(/assets/images/background.jpg);
-   // --background: url(/assets/images/background.jpg) 0 0/100% 100% no-repeat;
-}
-
 .card {
-    width:10%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+  --background: gold;
+  padding: 30px;
+  height: calc(500vh - (100px + 56px));
+  overflow: hidden;
   }
+
   .card-body {
     
     --background: gold;
@@ -38,12 +28,35 @@ ion-content{
     background: #555;
   }
   
+  .header a{
+
+    position: 100%;
+    padding: 2px 20px;
+    width: 100rem 300rem;
+    padding-right: 30px;
+    top: 30px;
+    left: 10px;
+    
+  }
   .header h1 {
     position: relative;
     top: 18px;
     left: 10px;
   }
   .pics{
-    width: 509px;
-    height: 476px;
+    
+    width: auto;
+    padding: 30px;
+   
   }
+
+  /* Custom Skeleton Line Height and Margin */
+.custom-skeleton ion-skeleton-text {
+  line-height: 13px;
+}
+
+.custom-skeleton ion-skeleton-text:last-child {
+  margin-bottom: 5px;
+}
+
+  

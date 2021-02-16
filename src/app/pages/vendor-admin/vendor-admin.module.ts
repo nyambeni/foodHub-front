@@ -9,7 +9,7 @@ import { VendorAdminPageRoutingModule } from './vendor-admin-routing.module';
 import { VendorAdminPage } from './vendor-admin.page';
 
 @NgModule({
-  
+
   imports: [
     CommonModule,
     FormsModule,

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchService {
 
+  // tslint:disable-next-line: variable-name
   search_url = 'http://168.172.185.4:6000/search';
   constructor(private http: HttpClient) { }
   search: any;
@@ -18,7 +19,7 @@ export class SearchService {
  
     return this.search.filter((item) => {
          return item.name.toLowerCase().includes(searchTerm.toLowerCase());
-     });  
+     });
 
  }
 

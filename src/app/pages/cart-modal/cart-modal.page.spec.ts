@@ -1,5 +1,34 @@
+// import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+// import { CartModalPage } from './cart-modal.page';
+
+// describe('CartModalPage', () => {
+//   let component: CartModalPage;
+//   let fixture: ComponentFixture<CartModalPage>;
+
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ CartModalPage ],
+//       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+//     })
+//     .compileComponents();
+//   }));
+
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(CartModalPage);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
+
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
+
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+
 import { CartModalPage } from './cart-modal.page';
 
 describe('CartModalPage', () => {
@@ -9,13 +38,16 @@ describe('CartModalPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CartModalPage ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    })
+    .compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(CartModalPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
