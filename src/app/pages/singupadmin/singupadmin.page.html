@@ -8,6 +8,7 @@
 <ion-content >
      
   <ion-card-content>
+
   <ion-item>
         <ion-label position="floating" >Restuarant Name</ion-label>
         <ion-input type ="text" [(ngModel)]= "restuarant_name" name = "restuarant_name"></ion-input>
@@ -57,7 +58,7 @@
       <ion-button type = "submit" color = "success" shape="round" (click)="goHome()">Register</ion-button>
       <ion-button color = "danger" shape = "round" (click)= "backButton()">Cancel</ion-button>
     </div>
-  
+  <div *ngIf="msgTrue">Regristration completed.</div>
   <!-- </div> -->
 
 </ion-card-content>  
