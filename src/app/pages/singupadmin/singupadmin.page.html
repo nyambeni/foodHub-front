@@ -5,61 +5,42 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-     
-  <ion-card-content>
+<ion-content  color="primary">
+  <form  #form="ngForm" (ngSubmit)="goHome()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Create your account!</h3>
+          </div>
+          <div * ngIf="msgTrue">Register Success</div>
+          <div padding>
+            <ion-item>
+              <ion-input  name="restuarant_name" type="text" placeholder="Resturant Name" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input  name="address" type="text" placeholder="Address" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input  name="email_address" type="email" placeholder="Email Address" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="cellNo" type="text" placeholder="Contact Number" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="confirm" type="password" placeholder="Password again" ngModel required></ion-input>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </form>
 
-  <ion-item>
-        <ion-label position="floating" >Restuarant Name</ion-label>
-        <ion-input type ="text" [(ngModel)]= "restuarant_name" name = "restuarant_name"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating" >Email Address</ion-label>
-        <ion-input type = "email" [(ngModel)]= "email_address" name = "email_address"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating" >Contacts</ion-label>
-        <ion-input type = "text" [(ngModel)]= "contact" name = "contact"></ion-input>
-      </ion-item>
-
-     <ion-item>
-        <ion-label position="floating">Address</ion-label>
-        <ion-textarea type = "text" [(ngModel)]= "address_loc" placeholder="Address" name = "address_loc"></ion-textarea>
-     </ion-item>
-
-      <ion-item>
-        <ion-label  position="floating">Password</ion-label>
-        <ion-input type= "password" [(ngModel)]= "pass_word" name = "pass_word"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label  position="floating">Confirm Password</ion-label>
-        <ion-input type= "password" [(ngModel)]= "conPassword"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-item>
-          Is delivery available ?  
-          <ion-toggle [(ngModel)] ="rest_status" name = "rest_status" color="success"></ion-toggle>
-          <p *ngIf="rest_status" name = "rest_status">Active</p>
-          <p *ngIf="!rest_status" name = "rest_status">Inactive</p>
-        </ion-item>
-        
-        <ion-item>
-          <ion-label position="fixed">Attachments</ion-label>
-          <label class="control-label small" for="file_img">(jpg/pdf):</label> <input type="file" name="file_img">
-        </ion-item>
-      </ion-item>
-    <!-- </div>  -->
- 
-    <div>
-      <ion-button type = "submit" color = "success" shape="round" (click)="goHome()">Register</ion-button>
-      <ion-button color = "danger" shape = "round" (click)= "backButton()">Cancel</ion-button>
-    </div>
-  <div *ngIf="msgTrue">Regristration completed.</div>
-  <!-- </div> -->
-
-</ion-card-content>  
 </ion-content>

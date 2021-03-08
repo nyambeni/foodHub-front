@@ -1,27 +1,44 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http'; // step 1
+import { Http, RequestOptions } from '@angular/http'; // step 1
+import {HttpClient,HttpHeaders,HttpParams} from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService { // class name
-  profile_url = 'http://localhost:6000/admin';  // step 2 variable
-  overview_url = 'http://localhost:3000/restu_register'; // check
+  profile_url = 'http://localhost:3000/restu_register';  
+  overview_url = 'http://localhost:6000/'; // check
 
   constructor(private httpClient: HttpClient) { }
 
-  getProfile() { // this is a function
+getProfile()
+{
+  const headers = new Headers();
+  headers.append('Content-Type','application/json');
+  return this.httpClient.get(this.overview_url);
+}
 
+createProfile(createResource)
+{
+return this.httpClient.post(this.profile_url,createResource);
+}
 
-   const httpHeaders = new HttpHeaders();
-   httpHeaders.append('content-type',"application/json");
-    return this.httpClient.get(this.profile_url);
-  }
+//getRequestOptions(): RequestOptions {
+//  const options = new RequestOptions();
+ // options.headers = this.getProfile(); 
 
-  CreateProfile(createResource)
-  {
-    return this.httpClient.post(this.overview_url,createResource);
-  }
+ // return options;
+//}
+
+ // get(url:string) { // this is a function
+
+   // return this.http.get(url,this.getRequestOptions());
+ // }
+
+ // post(url:string, data:any) { // this is a function
+
+    //return this.http.post(url,data, this.getRequestOptions());
+ // }
 }
 // thats all you need inside the service.. now we are goin to use this service anywhere were it is required
