@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-toolbar color = 'warning'>
     <ion-icon name="arrow-back-outline" size="large" (click)="backButton()"></ion-icon>
@@ -44,3 +45,70 @@
   </form>
 
 </ion-content>
+
+<!--
+<ion-header>
+  <ion-toolbar color = 'warning'>
+    <ion-icon name="arrow-back-outline" size="large" (click)="backButton()"></ion-icon>
+    <ion-title >Vendor Application</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+     
+  <ion-card-content>
+  <ion-item>
+        <ion-label position="floating" >Restuarant Name</ion-label>
+        <ion-input type ="text" [(ngModel)]= "createProf.restuarant_name" name = "restuarant_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" >Email Address</ion-label>
+        <ion-input type = "email" [(ngModel)]= "createProf.email_address" name = "email_address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" >Contacts</ion-label>
+        <ion-input type = "text" [(ngModel)]= "createProf.cellNo" name = "cellNo"></ion-input>
+      </ion-item>
+
+     <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-textarea type = "text" [(ngModel)]= "createProf.address" placeholder="Address" name = "address"></ion-textarea>
+     </ion-item>
+
+      <ion-item>
+        <ion-label  position="floating">Password</ion-label>
+        <ion-input type= "password" [(ngModel)]= "createProf.password" name = "password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  position="floating">Confirm Password</ion-label>
+        <ion-input type= "password" [(ngModel)]= "createProf.conPassword"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-item>
+          Is delivery available ?  
+          <ion-toggle [(ngModel)] ="rest_status" name = "rest_status" color="success"></ion-toggle>
+          <p *ngIf="rest_status" name = "rest_status">Active</p>
+          <p *ngIf="!rest_status" name = "rest_status">Inactive</p>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="fixed">Attachments</ion-label>
+          <label class="control-label small" for="file_img">(jpg/pdf):</label> <input type="file" name="file_img">
+        </ion-item>
+      </ion-item>
+    </div>  
+ 
+    <div>
+      <ion-button type = "submit" color = "success" shape="round" (click)="gotoLog()">Register</ion-button>
+      <ion-button color = "danger" shape = "round" (click)= "backButton()">Cancel</ion-button>
+    </div>
+  
+   </div> 
+
+</ion-card-content>  
+</ion-content>
+-->

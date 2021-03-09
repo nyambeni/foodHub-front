@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import {PostProvider } from '../../../providers/post-provider';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { FormControl, Form} from '@angular/forms';
 import {AdminService} from 'src/app/services/admin.service';
 
 @Component({
@@ -35,12 +35,16 @@ export class SingupadminPage implements OnInit {
     email_address: string = "";
     rest_status: string = "";
     confirm: string = "";
-
-  constructor( public adminService: AdminService,
+    form: FormControl;
+createProf :any = {};
+  constructor(
+    public adminService: AdminService,
     private router: Router,
     private postPvdr: PostProvider,
     private actRoute:ActivatedRoute,
-    private location: Location) { }
+    private location: Location
+   ) 
+   { }
 
     msgTrue = false;
     contantList : any;
@@ -62,37 +66,56 @@ this.adminService.getProfile().subscribe(data =>{
       this.confirm = data.conP;
       console.log(data);
 
-    });
+   });
 
   }
 
-  goHome() {
+  goHome(form) {
 
   
-   const newFormData = {restuarant_name:this.restuarant_name,
-   address:this.address,
-   email_address:this.email_address,
-   cellNo:this.cellNo,
-   password:this.password,
-   confirm:this.confirm};
+  /* const newFormData = {restuarant_name:"kotajoy",
+   address:"332 heah",
+   email_address:"kayy@gmai",
+   cellNo:"0124587965",
+   password:"1122336655"};*/
+console.log(form.value.restuarant_name);
+console.log(form.value.address);
+console.log(form.value.email_address);
+console.log(form.value.cellNo);
+console.log(form.value.password);
 
 //Dynamic data from form
-   //this.restuarant_name = resturant_name;
-   // console.log(form.value.address);
-   // console.log(form.value.email_address);
-   // console.log(form.value.cellNo);
-   // console.log(form.value.password);
-   // console.log(form.value.confirm);
+   const newFormData =  {
+     restuarant_name:form.value.restuarant_name,
+      address:form.value.address,
+    email_address:form.value.email_address,
+     cellNo:form.value.cellNo,
+      password: form.value.password,
+      confirm: form.value.confirm
+   };
 
 
-    this.adminService.createProfile(newFormData).subscribe(data => {
-      this.msgTrue =true;
+// const newFormData = {
+   // 'restuarant_name':this.form.controls.restuarant_name.value,
+   //  address:form.value.address,
+    // email_address:form.value.email_address,
+    // cellNo:form.value.cellNo,
+   //  password: form.value.password,
+   //  confirm: form.value.confirm
+ 
+
+
+   this.adminService.createProfile(newFormData).subscribe(data => {
+     
       console.log(data);
+      this.msgTrue =true;
     });
 
-      this.router.navigateByUrl('/admin-login');
+     return  this.router.navigateByUrl('/admin-login');
 
  }
+
+
  navAdmin() {
   return this.router.navigateByUrl('/vendor-admin');
 }

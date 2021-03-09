@@ -21,6 +21,8 @@ getProfile()
 
 createProfile(createResource)
 {
+   const headers = new Headers();
+  headers.append('Content-Type','application/json');
 return this.httpClient.post(this.profile_url,createResource);
 }
 
