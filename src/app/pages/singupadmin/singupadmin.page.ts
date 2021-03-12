@@ -8,7 +8,8 @@ import {
   FormGroup,
   FormControl,
   Validators,
-  FormBuilder
+  FormBuilder,
+  AbstractControl
 } from '@angular/forms';
 import {AdminService} from 'src/app/services/admin.service';
 import { NgModule, Pipe} from '@angular/core';
@@ -48,18 +49,77 @@ export class SingupadminPage implements OnInit {
     password: string= "" ;
     email_address: string ;
    // rest_status: string = "";
-    //conPassword: string = "";
+    conPassword: string = "";
 
     navCtrl: any;
+
+    public errorFeedback = {
+
+      'restuarant_name': {
+        'required': 'Restuarant name is required',
+        'maxlength': 'Restuarant name cannot be longer than 50 characters',
+        'minlength': 'Restuarant cannot be less than 2 characters'
+      },
+  
+      'email_address': {
+        'required': 'Email is required',
+        'pattern': 'Please enter a valid email address'
+      },
+      'cellNo': {
+        'required': 'Cellphone number is required',
+        'pattern': 'Please enter a valid cellphone number'
+      },
+      'address': {
+        'required': 'Physical address is required'
+      },
+      'password': {
+        'required': 'Please enter password',
+        'pattern': 'Password must be more than 8 characters'
+      },
+      'conPassword': {
+        'required': 'Please enter confirm password'
+      },
+      'passwordGroup': {
+        'notMatch': 'Password and confirm password do not match'
+      }
+  
+  
+    }
+  
+    formErrors = {
+      'restuarant_name': '',
+      'email_address': '',
+      'cellNo': '',
+      'address': '',
+      'password': '',
+      'conPassword': '',
+      'passwordGroup': ''
+  
+    }
 
   constructor( public adminService: AdminService,
     private router: Router,
     private postPvdr: PostProvider,
     private actRoute:ActivatedRoute,
-    private location: Location) { }
+    private location: Location,
+    private fb: FormBuilder) { }
 
     msgTrue = false;
     addVendors: any = [];
+
+    vendorReg = this.fb.group({
+      restuarant_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      email_address: ['', [Validators.required, Validators.pattern('[A-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      cellNo: ['', [Validators.required, Validators.pattern('(^0[123678][123456789][0-9]{7})')]],
+      address: ['', Validators.required],
+      passwordGroup: this.fb.group({
+        password: ['', [Validators.required, Validators.pattern('[A-z].{8,}')]],
+        conPassword: ['', [Validators.required]]
+      }, { validator: matchPsw })
+  
+    })
+
+
   ngOnInit() {
 this.getVendors();
 
@@ -147,6 +207,41 @@ backButton() {
   this.location.back();
  }
 
+ logValidationErrors(group: FormGroup = this.vendorReg): void {
+  Object.keys(group.controls).forEach((key: string) => {
+    const abstractControl = group.get(key);
+
+    this.formErrors[key] = '';
+    if (abstractControl && !abstractControl.valid &&
+      (abstractControl.touched || abstractControl.dirty)) {
+      const messages = this.errorFeedback[key];
+
+      for (const errorKey in abstractControl.errors) {
+        if (errorKey) {
+          this.formErrors[key] += messages[errorKey] + ' ';
+        }
+      }
+    }
+
+    if (abstractControl instanceof FormGroup) {
+      this.logValidationErrors(abstractControl);
+    }
+  });
+}
+
 
 }
 
+function matchPsw(group: AbstractControl): { [key: string]: any } | null { //gets reference value from password group containing both pasword and confirm password
+  const passwordControl = group.get('password');  //getting and assigning password
+  const confirmPasswordControl = group.get('confirmPassword');  //getting and assigning confirm password
+
+  if (passwordControl.value === confirmPasswordControl.value || (confirmPasswordControl.pristine)) //if statement compares password and confirm password
+  {
+    return null; //return null if passwords match
+  }
+  else {
+    return { 'notMatch': true }; //return 'notMatch' if passwords do not match
+  }
+
+}

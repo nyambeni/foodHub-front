@@ -25,6 +25,7 @@ import { ServiceproviderService } from './services/serviceprovider.service';
 import { HttpModule } from '@angular/http';
 import { PostProvider } from '../providers/post-provider';
 import { IonicStorageModule } from '@ionic/storage';
+import { ReactiveFormsModule} from '@angular/forms';
 
 
 // import { ActionsheetComponent } from './components/actionsheet/actionsheet.component';
@@ -49,6 +50,7 @@ import { IonicStorageModule } from '@ionic/storage';
     HttpClientModule,
     ProfilePageModule,
     IonicStorageModule.forRoot(),
+    ReactiveFormsModule,
 
   ],
   providers: [
