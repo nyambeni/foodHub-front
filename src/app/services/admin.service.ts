@@ -7,10 +7,30 @@ import {HttpClient,HttpHeaders,HttpParams} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AdminService { // class name
+
+  
+  constructor(private http: HttpClient) { }
+  login_url = 'http://localhost:3000/';
+  reg_url = 'http://localhost:3000/restu_register/';
+
+  public getProfile()
+  {
+    return this.http.get<any>(this.login_url);
+  }
+ 
+  
+  public createProfile(addven:any)
+  {
+    return this.http.post<any>(this. reg_url, addven, {});
+  }
+ /* constructor(private httpClient: HttpClient) { }
+
+
   profile_url = 'http://localhost:3000/restu_register';  
   overview_url = 'http://localhost:6000/'; // check
 
   constructor(private httpClient: HttpClient) { }
+
 
 getProfile()
 {
@@ -21,10 +41,16 @@ getProfile()
 
 createProfile(createResource)
 {
+<<<<<<< HEAD
+return this.httpClient.post(this.profile_url,createResource);
+}
+
+
    const headers = new Headers();
   headers.append('Content-Type','application/json');
 return this.httpClient.post(this.profile_url,createResource);
 }
+*/
 
 //getRequestOptions(): RequestOptions {
 //  const options = new RequestOptions();

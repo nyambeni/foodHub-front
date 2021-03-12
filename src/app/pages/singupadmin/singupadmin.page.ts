@@ -1,9 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 import { Location } from '@angular/common';
 import {PostProvider } from '../../../providers/post-provider';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormControl, Form} from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormsModule,
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder
+} from '@angular/forms';
 import {AdminService} from 'src/app/services/admin.service';
+import { NgModule, Pipe} from '@angular/core';
+import { HttpClient} from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
 
 @Component({
   selector: 'app-singupadmin',
@@ -12,109 +24,117 @@ import {AdminService} from 'src/app/services/admin.service';
 })
 export class SingupadminPage implements OnInit {
 
-    // tslint:disable-next-line: variable-name
-    restuarant_id: number;
-    // tslint:disable-next-line: variable-name
-    // tslint:disable-next-line: variable-name
-    // tslint:disable-next-line: no-inferrable-types
-    // tslint:disable-next-line: variable-name
-    // tslint:disable-next-line: quotemark
-    // tslint:disable-next-line: no-inferrable-types
-    // tslint:disable-next-line: variable-name
-    // tslint:disable-next-line: no-inferrable-types
-    // tslint:disable-next-line: variable-name
-    // tslint:disable-next-line: no-inferrable-types
-    // tslint:disable-next-line: variable-name
-    // tslint:disable-next-line: no-inferrable-types
-    // tslint:disable-next-line: variable-name
-    // tslint:disable-next-line: quotemark
-    restuarant_name: string = "";
+  //  restuarant_name:string;
+    //cellNo: string ;
+   // address: string ;
+  //  password: string;
+    //email_address: string ;
+
+   // rest_status: string = "";
+    //conPassword: string = "";
+
+  /* venData = { restuarant_id:" ",
+    restuarant_name:"",
+    cellNo: "",
+    address: "",
+    password: "",
+    email_address:  "",
+    rest_status: " ",
+    confirm:  " "};*/
+
+    restuarant_name:string= "";
     cellNo: string = "";
     address: string = "";
-    password: string = "";
-    email_address: string = "";
-    rest_status: string = "";
-    confirm: string = "";
-    form: FormControl;
-createProf :any = {};
-  constructor(
-    public adminService: AdminService,
+    password: string= "" ;
+    email_address: string ;
+   // rest_status: string = "";
+    //conPassword: string = "";
+
+    navCtrl: any;
+
+  constructor( public adminService: AdminService,
     private router: Router,
     private postPvdr: PostProvider,
     private actRoute:ActivatedRoute,
-    private location: Location
-   ) 
-   { }
+    private location: Location) { }
 
     msgTrue = false;
-    contantList : any;
+    addVendors: any = [];
   ngOnInit() {
-
-this.adminService.getProfile().subscribe(data =>{
-  this.contantList = data;
-})
-
-    this.actRoute.params.subscribe((data: any) => {
-
-      this.restuarant_id = data.id;
-      this.restuarant_name = data.name;
-      this.password = data.password;
-      this.email_address = data.e_address;
-      this.rest_status = data.status;
-      this.cellNo = data.phone;
-      this.address = data.address;
-      this.confirm = data.conP;
-      console.log(data);
-
-   });
+this.getVendors();
 
   }
 
-  goHome(form) {
+  getVendors()
+  {
+    this.adminService.createProfile(this.addVendors).subscribe((data: any)=>
+    {this.addVendors=data;
+    console.log(this.addVendors);
 
-  
-  /* const newFormData = {restuarant_name:"kotajoy",
-   address:"332 heah",
-   email_address:"kayy@gmai",
-   cellNo:"0124587965",
-   password:"1122336655"};*/
-console.log(form.value.restuarant_name);
-console.log(form.value.address);
-console.log(form.value.email_address);
-console.log(form.value.cellNo);
-console.log(form.value.password);
-
-//Dynamic data from form
-   const newFormData =  {
-     restuarant_name:form.value.restuarant_name,
-      address:form.value.address,
-    email_address:form.value.email_address,
-     cellNo:form.value.cellNo,
-      password: form.value.password,
-      confirm: form.value.confirm
-   };
-
-
-// const newFormData = {
-   // 'restuarant_name':this.form.controls.restuarant_name.value,
-   //  address:form.value.address,
-    // email_address:form.value.email_address,
-    // cellNo:form.value.cellNo,
-   //  password: form.value.password,
-   //  confirm: form.value.confirm
- 
-
-
-   this.adminService.createProfile(newFormData).subscribe(data => {
-     
-      console.log(data);
-      this.msgTrue =true;
     });
 
-     return  this.router.navigateByUrl('/admin-login');
+  }
+
+  goHome() {
+
+    const newFormData = {restuarant_name:"KingKotas",
+    address:"21477 Aubrey Matlala",
+    email_address:"KotasKings@gmail.com",
+    cellNo:"0123426583",
+    password:"KingsKotas",
+    confirm:"KingsKotas"};
+ 
+ //Dynamic data from form
+    //this.restuarant_name = resturant_name;
+    // console.log(form.value.address);
+    // console.log(form.value.email_address);
+    // console.log(form.value.cellNo);
+    // console.log(form.value.password);
+    // console.log(form.value.confirm);
+ 
+ 
+     this.adminService.createProfile(newFormData).subscribe(data => {
+       this.msgTrue =true;
+       console.log(data);
+     });
+
+   /* this.adminService.createProfile(this.addVendors).subscribe(
+      data =>
+      console.log(data));*/
+      
+  /*
+      console.log(this.venData.restuarant_name);
+      console.log(this.venData.cellNo);
+      console.log(this.venData.address);
+      console.log(this.venData.email_address);
+      console.log(this.venData.password,);*/
+      
+  /*
+  //mock data
+   const newFormData = {restuarant_name:"king kots",
+   address:"213 hhenna street",
+   email_address:"KingKotas@gmail.com",
+   cellNo:"0123456873",
+   password:"KotasKing@2021",
+   confirm:"KotasKing@2021"};*/
+
+//Dynamic data from form
+   //this.restuarant_name = resturant_name;
+   // console.log(form.value.address);
+   // console.log(form.value.email_address);
+   // console.log(form.value.cellNo);
+   // console.log(form.value.password);
+   // console.log(form.value.confirm);
+
+
+    /*this.adminService.createProfile(newFormData).subscribe(data => {
+      this.msgTrue =true;
+      console.log(data);
+    });
+*/
+    return this.router.navigateByUrl('/admin-login');
 
  }
-
 
  navAdmin() {
   return this.router.navigateByUrl('/vendor-admin');
