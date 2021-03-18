@@ -117,7 +117,7 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="vendorReg" (ngSubmit)="logVendor()">
+  <form [formGroup]="vendorReg" (ngSubmit)="logVendor()" method="POST">
 
     <ion-item lines="full">
       <ion-input [(ngModel)]="restuarant_name" formControlName="restuarant_name" autocapitalize inputmode="text" placeholder="Restuarant Name"
