@@ -103,6 +103,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ToastController } from '@ionic/angular';
+import {
+  ReactiveFormsModule,
+  FormsModule,
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+  AbstractControl
+} from '@angular/forms';
 import {PostProvider } from '../../../providers/post-provider';
 import { ServiceproviderService } from 'src/app/services/serviceprovider.service';
 
@@ -132,7 +141,8 @@ export class SingupcustPage implements OnInit {
     private router: Router,
      private location: Location, 
      private actRoute: ActivatedRoute,
-      private postPvdr: PostProvider) { }
+      private postPvdr: PostProvider,
+      private fb: FormBuilder) { }
 
       msgTrue = false;
     contantList : any;
@@ -159,17 +169,18 @@ export class SingupcustPage implements OnInit {
     })
   }
 
-  goUser () {
+  goUser() {
 
     const newFormData = {
-        firstname:"khodani",
-        surname: "mulaudzi",
-        passcode: "mulaudzi101",
-        email_address: "mulaudzi@gmail.com",
-        addressInfo:"101 cul de sac drive",
-        gender: this.gender,
-        confirm_password:"mulaudzi101"
-      }
+
+      aksi: 'add',
+      firstname : this.firstname,
+      surname : this.surname,
+      passcode: this.passcode,
+      email_address: this.email_address,
+      addressInfo: this.addressInfo,
+      gender: this.gender
+    };
    
     this.serviceproviderService.createUser(newFormData).subscribe(data => {
       this.msgTrue =true;

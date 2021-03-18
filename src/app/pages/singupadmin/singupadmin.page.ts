@@ -121,7 +121,20 @@ export class SingupadminPage implements OnInit {
 
 
   ngOnInit() {
-this.getVendors();
+    
+    this.actRoute.params.subscribe((data: any) => {
+
+      this.restuarant_name = data.restuarant_name;
+      this.address = data.address;
+      this.email_address =this.email_address;
+      this.cellNo = data.cellNo;
+      this.password = data.password;
+      console.log(data);
+    });
+
+this.vendorReg.valueChanges.subscribe((data)=>{
+  this.logValidationErrors(this.vendorReg);
+});
 
   }
 
@@ -137,12 +150,12 @@ this.getVendors();
 
   goHome() {
 
-    const newFormData = {restuarant_name:"KingKotas",
+   /* const newFormData = {restuarant_name:"KingKotas",
     address:"21477 Aubrey Matlala",
     email_address:"KotasKings@gmail.com",
     cellNo:"0123426583",
     password:"KingsKotas",
-    confirm:"KingsKotas"};
+    confirm:"KingsKotas"};*/
  
  //Dynamic data from form
     //this.restuarant_name = resturant_name;
@@ -152,46 +165,23 @@ this.getVendors();
     // console.log(form.value.password);
     // console.log(form.value.confirm);
  
+     return new Promise(resolve => {
+
+      const newFormData = {
+
+        aksi: 'add',
+        restuarant_name : this.restuarant_name,
+        address : this.address,
+        email_address: this.email_address,
+        cellNo: this.cellNo,
+        password: this.password
+      };
+      this.adminService.createProfile(newFormData).subscribe(data => {
+        console.log(data);
+      });
+      });
  
-     this.adminService.createProfile(newFormData).subscribe(data => {
-       this.msgTrue =true;
-       console.log(data);
-     });
-
-   /* this.adminService.createProfile(this.addVendors).subscribe(
-      data =>
-      console.log(data));*/
-      
-  /*
-      console.log(this.venData.restuarant_name);
-      console.log(this.venData.cellNo);
-      console.log(this.venData.address);
-      console.log(this.venData.email_address);
-      console.log(this.venData.password,);*/
-      
-  /*
-  //mock data
-   const newFormData = {restuarant_name:"king kots",
-   address:"213 hhenna street",
-   email_address:"KingKotas@gmail.com",
-   cellNo:"0123456873",
-   password:"KotasKing@2021",
-   confirm:"KotasKing@2021"};*/
-
-//Dynamic data from form
-   //this.restuarant_name = resturant_name;
-   // console.log(form.value.address);
-   // console.log(form.value.email_address);
-   // console.log(form.value.cellNo);
-   // console.log(form.value.password);
-   // console.log(form.value.confirm);
-
-
-    /*this.adminService.createProfile(newFormData).subscribe(data => {
-      this.msgTrue =true;
-      console.log(data);
-    });
-*/
+  
     return this.router.navigateByUrl('/admin-login');
 
  }
@@ -229,12 +219,15 @@ backButton() {
   });
 }
 
+logVendor() {
+  console.log(this.vendorReg.value);
+}
 
 }
 
 function matchPsw(group: AbstractControl): { [key: string]: any } | null { //gets reference value from password group containing both pasword and confirm password
   const passwordControl = group.get('password');  //getting and assigning password
-  const confirmPasswordControl = group.get('confirmPassword');  //getting and assigning confirm password
+  const confirmPasswordControl = group.get('conPassword');  //getting and assigning confirm password
 
   if (passwordControl.value === confirmPasswordControl.value || (confirmPasswordControl.pristine)) //if statement compares password and confirm password
   {
