@@ -1,3 +1,4 @@
+/*
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { Chart } from 'chart.js';
@@ -153,4 +154,83 @@ export class SuperAdminPage implements OnInit {
     });
   }
 
+}*/
+/** 
+import { Component, OnInit } from '@angular/core';
+import { ModalController, NavParams } from '@ionic/angular';;
+
+@Component({
+  selector: 'app-super-admin',
+  templateUrl: './super-admin.page.html',
+  styleUrls: ['./super-admin.page.scss'],
+})
+
+export class SuperAdminPage implements OnInit {
+
+  vendor:any;
+
+  constructor(navParams: NavParams, private viewVendorCtrl: ModalController) {
+
+    this.vendor = navParams.get('');
+
+   }
+
+  ngOnInit() {
+  }
+
+  dismiss() {
+    this.viewVendorCtrl.dismiss();
+  }
+
+}
+**/
+
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ViewVendorPage } from 'src/app/pages/view-vendor/view-vendor.page';
+import { EditVendorPage } from 'src/app/pages/edit-vendor/edit-vendor.page';
+import {RestaurantService} from 'src/app/services/restaurant.service';
+//import {PostProvider } from '../../../../providers/post-provider';
+import { Router, ActivatedRoute } from '@angular/router'
+
+
+@Component({
+  selector: 'app-super-admin',
+  templateUrl: './super-admin.page.html',
+  styleUrls: ['./super-admin.page.scss'],
+})
+export class SuperAdminPage implements OnInit {
+      
+
+
+  
+
+  constructor(  public restaurantService: RestaurantService) { }
+
+
+    vendors :any =[];
+
+
+  ngOnInit() {
+
+ this.restaurantService.getRestu().subscribe(data =>
+    {
+      console.log(data);
+      this.vendors = data;
+    });
+//this.getRes();
+ 
+  }
+
+
+getRes()
+{/** 
+  this.restaurantService.getRestu().subscribe(data =>
+    {
+      console.log(data);
+      this.vendors = data;
+    });*/
+}
+ 
+ 
 }

@@ -39,6 +39,7 @@ export class AddMenuPage implements OnInit {
       console.log(data);
     });
 
+    
   }
 
   createdMenu() {

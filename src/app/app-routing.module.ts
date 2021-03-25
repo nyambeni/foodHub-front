@@ -175,7 +175,15 @@ const routes: Routes = [
   {
     path: 'landing',
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
+  },  {
+    path: 'view-vendor',
+    loadChildren: () => import('./pages/view-vendor/view-vendor.module').then( m => m.ViewVendorPageModule)
+  },
+  {
+    path: 'edit-vendor',
+    loadChildren: () => import('./pages/edit-vendor/edit-vendor.module').then( m => m.EditVendorPageModule)
   }
+
 
 
 ];
