@@ -1,3 +1,4 @@
+<!--
 <ion-header>
   <ion-toolbar color = 'warning'>
     <ion-icon name="arrow-black" (click)="backButton()"></ion-icon>
@@ -79,5 +80,79 @@
   </ion-item>
   
 </form>
+
+</ion-content>
+-->
+
+
+<ion-header>
+  <ion-toolbar color='warning'>
+    <ion-icon name="arrow-back-outline" size="large" (click)="backButton()"></ion-icon>
+    <ion-title style="text-align: center;">Customer Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="vendorReg" (ngSubmit)="logVendor()" method="POST">
+
+    <ion-item lines="full">
+      <ion-input [(ngModel)]="firstname" formControlName="firstname" autocapitalize inputmode="text" placeholder="First Name"
+        class="form-control" (blur)="logValidationErrors()"></ion-input>
+    </ion-item>
+  
+
+    <ion-item lines="full">
+      <ion-input [(ngModel)]= "surname" formControlName="surname" autocapitalize inputmode="text" placeholder="Surname"
+        (blur)="logValidationErrors()"></ion-input>
+    </ion-item>
+    
+
+    <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select placeholder="Select One" name = "gender" [(ngModel)]="gender">
+          <ion-select-option value="f">Female</ion-select-option>
+          <ion-select-option value="m">Male</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    <ion-item lines="full">
+      <ion-input [(ngModel)]= "cell_no" formControlName="cell_no" autocapitalize inputmode="text" placeholder="Cellphone Number"
+        (blur)="logValidationErrors()"></ion-input>
+    </ion-item>
+    
+
+
+    <ion-item lines="full">
+      <ion-input [(ngModel)]= "addressInfo" formControlName="addressInfo" autocapitalize inputmode="text" placeholder="Physical Address"
+        (blur)="logValidationErrors()"></ion-input>
+    </ion-item>
+    
+    <div formGroupName="passwordGroup">
+      <ion-item lines="full">
+        <ion-input [(ngModel)]= "passcode" formControlName="passcode" autocapitalize inputmode="text" placeholder="Password"
+          (blur)="logValidationErrors()"></ion-input>
+      </ion-item>
+      
+
+
+      <ion-item lines="full">
+        <ion-input [(ngModel)]= "confirm_password" formControlName="confirm_password" autocapitalize inputmode="text" placeholder="Confirm Password"
+          (blur)="logValidationErrors()"></ion-input>
+      </ion-item>
+      
+      
+    </div>
+    <br>
+
+
+    <div>
+      <ion-button [disabled]="!vendorReg.valid" type="submit" color="success" shape="round" (click)="goUser()">Register
+      </ion-button>
+      <ion-button color="danger" shape="round" (click)="backButton()">Cancel</ion-button>
+      <ion-button color="danger" shape="round" (click)="test()">Test</ion-button>
+    </div>
+
+  </form>
+
 
 </ion-content>

@@ -1,0 +1,160 @@
+{
+  "shops": [
+    {
+      "id": 1,
+      "name": "Kasi Kota",
+      "sales": 750,
+      "address": "1080 Block C Mabopane",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "name": "Kasi Food",
+      "sales": 150,
+      "address": "702 Block TT Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 3,
+      "name": "Kasi Eats",
+      "sales": 350,
+      "address": "898 Block K Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 4,
+      "name": "Kasi Dijo",
+      "sales": 1350,
+      "address": "785 Block L Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 5,
+      "name": "Kota Joe's",
+      "sales": 950,
+      "address": "111 Block GG Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 6,
+      "name": "Dijo tse monate",
+      "sales": 381,
+      "address": "909 Block LKK Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 7,
+      "name": "Thabang's Foods",
+      "sales": 567,
+      "address": "234 Block P Juku-Lane Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 8,
+      "name": "Enoch's Sphatlhos",
+      "sales": 990,
+      "address": "1516 Block RR Soshanguve",
+      "status": "Active"
+    },
+    {
+      "id": 9,
+      "name": "Metro Food",
+      "sales": 1150,
+      "address": "925 Block U Mabopane",
+      "status": "Active"
+    },
+    {
+      "id": 10,
+      "name": "Happy Meals",
+      "sales": 503,
+      "address": "1123 Zone 1 Ga-Rankuwa",
+      "status": "Pending"
+    },
+    {
+      "id": 11,
+      "name": "Nhlanhla's Hot Meals",
+      "sales": 419,
+      "address": "774 Block WW Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 12,
+      "name": "AB and Eunice Hot Meals",
+      "sales": 419,
+      "address": "1 Zone 23 Ga-Rankuwa",
+      "status": "Active"
+    },
+    {
+      "id": 13,
+      "name": "Qwerty Digital Meals",
+      "sales": 1715,
+      "address": "1023 Zone 2 Ga-Rankuwa",
+      "status": "Pending"
+    },
+    {
+      "id": 14,
+      "name": "Tshepo's Food Court",
+      "sales": 321,
+      "address": "789 Block S Mabopane",
+      "status": "Active"
+    },
+    {
+      "id": 15,
+      "name": "Frank's House of Dumblings",
+      "sales": 15,
+      "address": "555 Block P JukuLane Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 16,
+      "name": "Mabopane Highway Stop",
+      "sales": 85,
+      "address": "423 Soshanguve Block XX",
+      "status": "Pending"
+    },
+    {
+      "id": 17,
+      "name": "Sosh Hot Meals",
+      "sales": 88,
+      "address": "8 Block VV Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 18,
+      "name": "Nice Foods",
+      "sales": 102,
+      "address": "444 Mandela Road SOshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 19,
+      "name": "The DA Food House",
+      "sales": 447,
+      "address": "721 Block XX Soshanguve",
+      "status": "Pending"
+    },
+    {
+      "id": 20,
+      "name": "ANC YL Food Shop",
+      "sales": 568,
+      "address": "990 Biko Street",
+      "status": "Pending"
+    },
+    {
+      "id": 21,
+      "name": "Everyone's Food Shop",
+      "sales": 567,
+      "address": "777 Tsunami Street Ga-Rankuwa",
+      "status": "Pending"
+    }
+  ],
+  "vendor": [
+    {
+      "id": 1,
+      "name": "Kasi Kota",
+      "sales": 750,
+      "address": "1080 Block C Mabopane",
+      "status": "Active"
+    }
+  ]
+}

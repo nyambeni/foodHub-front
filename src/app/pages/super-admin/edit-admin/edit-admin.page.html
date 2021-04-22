@@ -13,17 +13,17 @@
 <ion-content>
   <ion-list>
     <ion-list-header color="danger">
-      Edit {{vendor.name}} Information
+      Edit {{shopData.restuarant_name}} Information
     </ion-list-header>
   </ion-list>
   <ion-item>
     <ion-label position="floating">Vendor Status</ion-label>
-    <ion-select [(ngModel)]="vendor.type" value="Active" okText="Update" cancelText="Cancel">
+    <ion-select [(ngModel)]="shopData.status" value="Active" okText="Update" cancelText="Cancel">
     <ion-select-option value="Active">Active</ion-select-option>
     <ion-select-option value="Pending">Pending</ion-select-option>
   </ion-select>
   </ion-item>
 
 
-  <ion-button expand="full" color="success" (click)="update()">Update</ion-button>
+  <ion-button expand="full" color="success" (click)="update()" (click)="showToast(shopData)">Update</ion-button>
 </ion-content>

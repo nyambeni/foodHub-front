@@ -1,8 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>All Shops</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content>
-<ion-list *ngFor="let vendorss of vendors">
-    
-      <h4>  {{vendorss.restuarant_name}} </h4>
-       
-</ion-list>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let shopData of shopDatas; let i=index">
+      <ion-avatar>
+        <!--add click for avatar-->
+        <img class="avatar" src="../../assets/images/avatar.png">
+        <!--image placed here-->
+      </ion-avatar>
+      <ion-label>
+        <h4>{{shopData.restuarant_name}}</h4>
+      </ion-label>
+      <ion-icon name="eye" color="success" (click)="_openModal(shopData)" slot="end"></ion-icon>
+      <ion-icon name="create" color="danger" slot="end" (click)="_editModal(shopData)"></ion-icon>
+      <ion-icon name="trash-outline" slot="end" (click)="presentAlertConfirm(shopData)"></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>

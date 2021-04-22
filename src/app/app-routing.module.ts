@@ -63,11 +63,6 @@ const routes: Routes = [
     loadChildren: () => import('./restaurants/restaurants.module').then( m => m.RestaurantsPageModule)
   },
   {
-    path: 'vendor-admin',
-    loadChildren: () => import('./pages/vendor-admin/vendor-admin.module').then( m => m.VendorAdminPageModule),
-   // canActivate: [AdminauthGuard]
-  },
-  {
     path: 'profile',
     loadChildren: () => import('./pages/vendor/profile/profile.module').then( m => m.ProfilePageModule),
    // canActivate: [AuthGuard]
@@ -129,10 +124,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
   {
-    path: 'super-admin',
-    loadChildren: () => import('./pages/super-admin/super-admin.module').then( m => m.SuperAdminPageModule)
-  },
-  {
     path: 'show-menu/:id/:name/:price/:description/:status',
     loadChildren: () => import('./pages/vendor/show-menu/show-menu.module').then( m => m.ShowMenuPageModule)
   },
@@ -175,14 +166,28 @@ const routes: Routes = [
   {
     path: 'landing',
     loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
-  },  {
-    path: 'view-vendor',
-    loadChildren: () => import('./pages/view-vendor/view-vendor.module').then( m => m.ViewVendorPageModule)
   },
   {
-    path: 'edit-vendor',
-    loadChildren: () => import('./pages/edit-vendor/edit-vendor.module').then( m => m.EditVendorPageModule)
-  }
+    path: 'driver',
+    loadChildren: () => import('./pages/driver/driver.module').then( m => m.DriverPageModule)
+  },
+  {
+    path: 'driver-order',
+    loadChildren: () => import('./pages/driver-order/driver-order.module').then( m => m.DriverOrderPageModule)
+  },  {
+    path: 'super-admin',
+    loadChildren: () => import('./pages/super-admin/super-admin.module').then( m => m.SuperAdminPageModule)
+  },
+
+  /*{
+    path: 'view-shop'k
+    loadChildren: () => import('./pages/view-shop/view-shop.module').then( m => m.ViewShopPageModule)
+  },
+  {
+    path: 'edit-shop',
+    loadChildren: () => import('./pages/edit-shop/edit-shop.module').then( m => m.EditShopPageModule)
+  },*/
+  
 
 
 

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios"></span>
+        <ion-icon name="md-close" showWhen="android,windows" slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>View Vendor Info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-list-header color="tertiary">
+      Summary of {{shopData.restuarant_name}} sales
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Status of Vendor:</ion-label>
+      <ion-badge color="primary" slot="end">{{shopData.status}}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Premesis address:</ion-label>
+      <ion-badge color="primary" slot="end">{{shopData.address}}</ion-badge>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

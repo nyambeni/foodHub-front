@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
@@ -7,27 +6,31 @@
         <ion-icon name="md-close" showWhen="android,windows" slot="icon-only" name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>View Vendor Info</ion-title>
+    <ion-title>Driver Order Info</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div>
   <ion-list>
     <ion-list-header color="tertiary">
-      Summary of {{vendor.name}} sales
+      Order Info
     </ion-list-header>
 
     <ion-item>
-      <ion-label>Status of Vendor:</ion-label>
-      <ion-badge color="primary" slot="end">{{vendor.type}}</ion-badge>
+      <ion-label>Location of drop off</ion-label>
+      <ion-badge color="primary" slot="end">{{order.dropoff}}</ion-badge>
     </ion-item>
 
     <ion-item>
-      <ion-label>Meals sold to customers:</ion-label>
-      <ion-badge color="primary" slot="end">{{vendor.customers}}</ion-badge>
+      <ion-label>Status of Order:</ion-label>
+      <ion-badge color="primary" slot="end">{{order.status}}</ion-badge>
     </ion-item>
 
+    <ion-button expand="full" color="success" >Accept Order</ion-button>
+
   </ion-list>
+</div>
+
 
 </ion-content>

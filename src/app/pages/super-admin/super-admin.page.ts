@@ -1,7 +1,8 @@
-/*
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
-import { Chart } from 'chart.js';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController, AlertController, ToastController } from '@ionic/angular';
+import {AdminService} from 'src/app/services/admin.service';
+import { EditAdminPage } from './edit-admin/edit-admin.page';
+import { ViewAdminPage } from './view-admin/view-admin.page';
 
 @Component({
   selector: 'app-super-admin',
@@ -9,228 +10,103 @@ import { Chart } from 'chart.js';
   styleUrls: ['./super-admin.page.scss'],
 })
 export class SuperAdminPage implements OnInit {
-  doughnutChart: any;
-  lineChart: any;
 
 
-  constructor() { }
-  segment = 0;
-  selectedSlide: any;
-  sliderOptions = {
-    initialSlide : 0,
-    slidesPerView: 1,
-    speed: 400,
-  };
+  shopDatas:any = [];
 
-
-  items = ['apple', 'banana', 'cherry', 'apple', 'banana', 'cherry'];
-
-  @ViewChild('barCanvas',  { static: true }) barCanvas: ElementRef;
-  @ViewChild('doughnutCanvas',  { static: true }) doughnutCanvas: ElementRef;
-  @ViewChild('lineCanvas',  { static: true }) lineCanvas: ElementRef;
-
-
-  private barChart: Chart;
-
-
-  unread() {
-
-    console.log('my test works');
-
-  }
-  test() {
-    console.log('my test works');
-  }
-
-  delete() {
-    console.log('my delete works');
-  }
+  constructor(private modalCtrl: ModalController,
+              private _adminService: AdminService,
+              private alertModal: AlertController,
+              private infoToast: ToastController) { }
 
   ngOnInit() {
-    this.barChart = new Chart(this.barCanvas.nativeElement, {
-      type: 'bar',
-      data: {
-        labels: ['Mamas Kitchen', 'Nkukhu Box', 'KFC', 'Chicken Licken', 'Nandos', 'Kasi Krumps'],
-        datasets: [
-          {
-            label: '# Based on Restaurant Order Volume',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true
-              }
-            }
-          ]
-        }
-      }
-    });
 
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-      type: 'doughnut',
-      data: {
-        labels: ['Spathlo', 'Skopo', 'Pap And Wors', 'Zinger Bucket', 'Marapo', 'Mogodu'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF6384', '#36A2EB', '#FFCE56']
-          }
-        ]
-      }
-    });
+    //calling service on initial load to show all shops in database
 
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ],
-        datasets: [
-          {
-            label: 'System User Activity',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: 'rgba(75,192,192,0.4)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 45, 54, 72, 64, 88, 74],
-            spanGaps: false
-          }
-        ]
-      }
-    });
-  }
-
-  async segmentChanged() {
-    await this.selectedSlide.slideTo(this.segment);
+     this._adminService.getShops()
+        .subscribe(data => this.shopDatas = data);
+        console.log(this.shopDatas);
 
   }
-
-  async slideChanged(slides: IonSlides) {
-    this.selectedSlide = slides;
-    slides.getActiveIndex().then(selectedIndex => {
-      this.segment = selectedIndex;
-    });
-  }
-
-}*/
-/** 
-import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';;
-
-@Component({
-  selector: 'app-super-admin',
-  templateUrl: './super-admin.page.html',
-  styleUrls: ['./super-admin.page.scss'],
-})
-
-export class SuperAdminPage implements OnInit {
-
-  vendor:any;
-
-  constructor(navParams: NavParams, private viewVendorCtrl: ModalController) {
-
-    this.vendor = navParams.get('');
-
-   }
-
-  ngOnInit() {
-  }
-
-  dismiss() {
-    this.viewVendorCtrl.dismiss();
-  }
-
-}
-**/
-
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { ViewVendorPage } from 'src/app/pages/view-vendor/view-vendor.page';
-import { EditVendorPage } from 'src/app/pages/edit-vendor/edit-vendor.page';
-import {RestaurantService} from 'src/app/services/restaurant.service';
-//import {PostProvider } from '../../../../providers/post-provider';
-import { Router, ActivatedRoute } from '@angular/router'
-
-
-@Component({
-  selector: 'app-super-admin',
-  templateUrl: './super-admin.page.html',
-  styleUrls: ['./super-admin.page.scss'],
-})
-export class SuperAdminPage implements OnInit {
-      
-
 
   
 
-  constructor(  public restaurantService: RestaurantService) { }
+  //toast to confirm deleted item
 
-
-    vendors :any =[];
-
-
-  ngOnInit() {
-
- this.restaurantService.getRestu().subscribe(data =>
-    {
-      console.log(data);
-      this.vendors = data;
+  async showToast(shopDatas) {
+    const toast = await this.infoToast.create({
+      message: shopDatas.name + ' has been deleted',
+      duration: 1500
     });
-//this.getRes();
- 
+    toast.present();
+  }
+  
+
+  //alert to confirm deletion of shop
+
+  async presentAlertConfirm(shopData) {
+    const alert = await this.alertModal.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to delete ' + shopData.restuarant_name + ' ?</strong>' ,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+
+              //service called to delete shop
+
+              this._adminService.removeShop(shopData.id)
+              .subscribe(data => {
+                console.log(data);
+              });
+          
+              // calling toast to show item has been deleted
+
+              this.showToast(shopData);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
+  //opens modal to create page to view shop
 
-getRes()
-{/** 
-  this.restaurantService.getRestu().subscribe(data =>
-    {
-      console.log(data);
-      this.vendors = data;
-    });*/
-}
- 
- 
+  async  _openModal(shopData) {
+
+    const modal = await this.modalCtrl.create({
+      component: ViewAdminPage,
+      componentProps: {
+        shopData: shopData
+      }
+    });
+
+    return await modal.present();
+
+  }
+
+  //opens modal to edit page to change shop attibutes
+
+  async  _editModal(shopData) {
+
+    const modal = await this.modalCtrl.create({
+      component: EditAdminPage,
+      componentProps: {
+        shopData: shopData
+      }
+    });
+
+    return await modal.present();
+
+  }
+
 }

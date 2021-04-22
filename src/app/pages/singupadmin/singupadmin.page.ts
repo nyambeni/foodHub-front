@@ -25,23 +25,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 })
 export class SingupadminPage implements OnInit {
 
-  //  restuarant_name:string;
-    //cellNo: string ;
-   // address: string ;
-  //  password: string;
-    //email_address: string ;
-
-   // rest_status: string = "";
-    //conPassword: string = "";
-
-  /* venData = { restuarant_id:" ",
-    restuarant_name:"",
-    cellNo: "",
-    address: "",
-    password: "",
-    email_address:  "",
-    rest_status: " ",
-    confirm:  " "};*/
+ 
 
     restuarant_name:string= "";
     cellNo: string = "";
@@ -150,21 +134,7 @@ this.vendorReg.valueChanges.subscribe((data)=>{
 
   goHome() {
 
-   /* const newFormData = {restuarant_name:"KingKotas",
-    address:"21477 Aubrey Matlala",
-    email_address:"KotasKings@gmail.com",
-    cellNo:"0123426583",
-    password:"KingsKotas",
-    confirm:"KingsKotas"};*/
- 
- //Dynamic data from form
-    //this.restuarant_name = resturant_name;
-    // console.log(form.value.address);
-    // console.log(form.value.email_address);
-    // console.log(form.value.cellNo);
-    // console.log(form.value.password);
-    // console.log(form.value.confirm);
- 
+
      return new Promise(resolve => {
 
       const newFormData = {
@@ -178,11 +148,13 @@ this.vendorReg.valueChanges.subscribe((data)=>{
       };
       this.adminService.createProfile(newFormData).subscribe(data => {
         console.log(data);
+
       });
+      return this.router.navigateByUrl('/admin-login');
       });
  
   
-    return this.router.navigateByUrl('/admin-login');
+    
 
  }
 

@@ -10,13 +10,13 @@ import {MenuService} from 'src/app/services/menu.service';
 
 export class AddMenuPage implements OnInit {
 
-  // tslint:disable-next-line: variable-name
-  product_name = '';
-  // tslint:disable-next-line: variable-name
-  product_description = '';
-  // tslint:disable-next-line: variable-name
-  product_price = '';
-  category = '';
+ 
+  product_name:string = '';
+ 
+  product_description:string = '';
+
+  product_price:string = '';
+  category:string = '';
   id: number;
 
   constructor(
@@ -43,6 +43,7 @@ export class AddMenuPage implements OnInit {
   }
 
   createdMenu() {
+    /** 
     return new Promise(resolve => {
 
       const body = {
@@ -56,6 +57,25 @@ export class AddMenuPage implements OnInit {
       this.menuService.createMenus(body).subscribe(data => {
         console.log(data);
       });
+      });*/
+
+
+      return new Promise(resolve => {
+
+      const body = {
+
+        aksi: 'add',
+        product_name : this.product_name,
+        product_description : this.product_description,
+        product_price: this.product_price,
+        category: this.category,
+       
+      };
+      this.menuService.createMenus(body).subscribe(data => {
+        console.log(data);
+
+      });
+     
       });
 
     }
