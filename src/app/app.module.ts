@@ -26,7 +26,7 @@ import { HttpModule } from '@angular/http';
 import { PostProvider } from '../providers/post-provider';
 import { IonicStorageModule } from '@ionic/storage';
 import { ReactiveFormsModule} from '@angular/forms';
-
+import { EditAdminPage} from 'src/app/pages/super-admin/edit-admin/edit-admin.page';
 
 // import { ActionsheetComponent } from './components/actionsheet/actionsheet.component';
 

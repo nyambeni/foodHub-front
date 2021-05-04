@@ -31,12 +31,8 @@ export class AdminService { // class name
   }
 
 
-  updateShop(shop:any) {
-    return this.http.put<void>(`${this.reg_url_shop}/${shop.id}`, shop, {
-      headers: new HttpHeaders({
-        'Conent-Type': 'application/json'
-      })
-    })
+  updateShop(shopData:any) {
+    return this.http.put(`${'http://localhost:3000/restu_update'}/${shopData.restuarant_id}`, shopData);
   } 
     //delete shop for superadmin
 

@@ -174,15 +174,17 @@ const routes: Routes = [
   {
     path: 'driver-order',
     loadChildren: () => import('./pages/driver-order/driver-order.module').then( m => m.DriverOrderPageModule)
-  },  {
+  },
+  {
     path: 'super-admin',
     loadChildren: () => import('./pages/super-admin/super-admin.module').then( m => m.SuperAdminPageModule)
   },
 
-  /*{
-    path: 'view-shop'k
-    loadChildren: () => import('./pages/view-shop/view-shop.module').then( m => m.ViewShopPageModule)
-  },
+  // {
+  //   path: 'view-admin',
+  //   loadChildren: () => import('./pages/super-admin/view-admin/view-admin.module').then( m => m.ViewAdminPageModule)
+  // }
+/*
   {
     path: 'edit-shop',
     loadChildren: () => import('./pages/edit-shop/edit-shop.module').then( m => m.EditShopPageModule)

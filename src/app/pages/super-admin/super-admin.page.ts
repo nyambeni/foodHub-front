@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, AlertController, ToastController } from '@ionic/angular';
-import {AdminService} from 'src/app/services/admin.service';
+import {AdminService} from 'src/app/services/admin.service';;
 import { EditAdminPage } from './edit-admin/edit-admin.page';
 import { ViewAdminPage } from './view-admin/view-admin.page';
 
@@ -35,7 +35,7 @@ export class SuperAdminPage implements OnInit {
 
   async showToast(shopDatas) {
     const toast = await this.infoToast.create({
-      message: shopDatas.name + ' has been deleted',
+      message: shopDatas.restuarant_name + ' has been deleted',
       duration: 1500
     });
     toast.present();
