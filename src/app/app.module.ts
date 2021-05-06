@@ -25,8 +25,9 @@ import { ServiceproviderService } from './services/serviceprovider.service';
 import { HttpModule } from '@angular/http';
 import { PostProvider } from '../providers/post-provider';
 import { IonicStorageModule } from '@ionic/storage';
-import { ReactiveFormsModule} from '@angular/forms';
-import { EditAdminPage} from 'src/app/pages/super-admin/edit-admin/edit-admin.page';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewVendorPage} from 'src/app/pages/super-admin/view-vendor/view-vendor.page';
+import { EditVendorPage } from './pages/super-admin/edit-vendor/edit-vendor.page';
 
 // import { ActionsheetComponent } from './components/actionsheet/actionsheet.component';
 
@@ -35,8 +36,12 @@ import { EditAdminPage} from 'src/app/pages/super-admin/edit-admin/edit-admin.pa
 
 @NgModule({
 
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent,
+    EditVendorPage,
+    ViewVendorPage],
+  entryComponents: [
+    EditVendorPage,
+    ViewVendorPage],
 
   imports: [BrowserModule,
     // tslint:disable-next-line: deprecation
@@ -51,6 +56,7 @@ import { EditAdminPage} from 'src/app/pages/super-admin/edit-admin/edit-admin.pa
     ProfilePageModule,
     IonicStorageModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
 
   ],
   providers: [

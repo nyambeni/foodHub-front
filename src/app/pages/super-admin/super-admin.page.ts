@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, AlertController, ToastController } from '@ionic/angular';
-import {AdminService} from 'src/app/services/admin.service';;
-import { EditAdminPage } from './edit-admin/edit-admin.page';
-import { ViewAdminPage } from './view-admin/view-admin.page';
+import {AdminService} from 'src/app/services/admin.service';
+import { ViewVendorPage } from './view-vendor/view-vendor.page';
+import { EditVendorPage } from './edit-vendor/edit-vendor.page';
 
 @Component({
   selector: 'app-super-admin',
@@ -84,7 +84,7 @@ export class SuperAdminPage implements OnInit {
   async  _openModal(shopData) {
 
     const modal = await this.modalCtrl.create({
-      component: ViewAdminPage,
+      component: ViewVendorPage,
       componentProps: {
         shopData: shopData
       }
@@ -99,7 +99,7 @@ export class SuperAdminPage implements OnInit {
   async  _editModal(shopData) {
 
     const modal = await this.modalCtrl.create({
-      component: EditAdminPage,
+      component: EditVendorPage,
       componentProps: {
         shopData: shopData
       }

@@ -178,7 +178,10 @@ const routes: Routes = [
   {
     path: 'super-admin',
     loadChildren: () => import('./pages/super-admin/super-admin.module').then( m => m.SuperAdminPageModule)
-  },
+  },  {
+    path: 'vendor-admin',
+    loadChildren: () => import('./pages/vendor-admin/vendor-admin.module').then( m => m.VendorAdminPageModule)
+  }
 
   // {
   //   path: 'view-admin',

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button color="danger" (click)="update()">
+      <ion-button color="danger" (click)="dismiss()">
         <span ion-text color="primary" showWhen="ios"></span>
         <ion-icon name="md-close" showWhen="android,windows" slot="icon-only" name="close"></ion-icon>
       </ion-button>
@@ -16,7 +16,8 @@
       Edit {{shopData.restuarant_name}} Information
     </ion-list-header>
   </ion-list>
-  <ion-item>
+
+   <ion-item>
     <ion-label position="floating">Vendor Status</ion-label>
     <ion-select [(ngModel)]="shopData.status" value="Active" okText="Update" cancelText="Cancel">
     <ion-select-option value="Active">Active</ion-select-option>
@@ -26,4 +27,6 @@
 
 
   <ion-button expand="full" color="success" (click)="update()" (click)="showToast(shopData)">Update</ion-button>
+
+
 </ion-content>
