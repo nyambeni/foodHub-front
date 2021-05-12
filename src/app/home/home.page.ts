@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
                  }, 3000);
                }
 
-
+   searchTerm: any = '';
 
   // testing the admin data
   adminData: any = [];
@@ -119,7 +119,7 @@ export class HomePage implements OnInit {
           icon: 'help-circle-outline',
           handler: () => {
             console.log('admin clicked');
-            this.route.navigateByUrl('/vendor-admin');
+            this.route.navigateByUrl('/vendor');
           }
       }
       ,
@@ -192,13 +192,6 @@ export class HomePage implements OnInit {
       };
     }, 5000);
   }
-
-  searchTerm: any = '';
-
-  find( event ) {
-    console.log(event);
-  }
-
 }
 
 // function for the restaurant click to menu

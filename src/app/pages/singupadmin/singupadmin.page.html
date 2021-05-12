@@ -2,7 +2,7 @@
 <!--Validation-->
 
 <ion-header>
-  <ion-toolbar color='warning'>
+  <ion-toolbar color='#2F4F4F'>
     <ion-icon name="arrow-back-outline" size="large" (click)="backButton()"></ion-icon>
     <ion-title style="text-align: center;">Vendor Application</ion-title>
   </ion-toolbar>
@@ -50,7 +50,7 @@
     </span>
     <div formGroupName="passwordGroup">
       <ion-item lines="full">
-        <ion-input [(ngModel)]= "password" formControlName="password" autocapitalize inputmode="text" placeholder="Password"
+        <ion-input [(ngModel)]= "password" formControlName="password" autocapitalize type="password" placeholder="Password"
           (blur)="logValidationErrors()"></ion-input>
       </ion-item>
       <span class="help-block" *ngIf="formErrors.password">
@@ -60,7 +60,7 @@
 
 
       <ion-item lines="full">
-        <ion-input [(ngModel)]= "conPassword" formControlName="conPassword" autocapitalize inputmode="text" placeholder="Confirm Password"
+        <ion-input [(ngModel)]= "conPassword" formControlName="conPassword" autocapitalize type="password" placeholder="Confirm Password"
           (blur)="logValidationErrors()"></ion-input>
       </ion-item>
       <span class="help-block" *ngIf="formErrors.conPassword || formErrors.passwordGroup">
@@ -78,7 +78,6 @@
       <ion-button [disabled]="!vendorReg.valid" type="submit" color="success" shape="round" (click)="goHome()">Register
       </ion-button>
       <ion-button color="danger" shape="round" (click)="backButton()">Cancel</ion-button>
-      <ion-button color="danger" shape="round" (click)="test()">Test</ion-button>
     </div>
 
   </form>

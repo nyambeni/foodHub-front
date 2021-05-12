@@ -178,10 +178,14 @@ const routes: Routes = [
   {
     path: 'super-admin',
     loadChildren: () => import('./pages/super-admin/super-admin.module').then( m => m.SuperAdminPageModule)
+  }, {
+    path: 'vendor',
+    loadChildren: () => import('./pages/vendor/vendor.module').then( m => m.VendorPageModule)
   },  {
-    path: 'vendor-admin',
-    loadChildren: () => import('./pages/vendor-admin/vendor-admin.module').then( m => m.VendorAdminPageModule)
-  }
+    path: 'signupdriver',
+    loadChildren: () => import('./pages/signupdriver/signupdriver.module').then( m => m.SignupdriverPageModule)
+  },
+
 
   // {
   //   path: 'view-admin',

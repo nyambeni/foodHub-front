@@ -1,5 +1,6 @@
 <ion-header>
-  <ion-toolbar color="warning">
+  <ion-toolbar color="#2F4F4F">
+    <ion-icon name="arrow-back-outline" size="large" (click)="backButton()"></ion-icon>
     <ion-title  textalign="center">All Shops</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +10,7 @@
     <ion-item *ngFor="let shopData of shopDatas; let i=index">
       <ion-avatar>
         <!--add click for avatar-->
-        <img class="avatar" src="../../assets/images/avatar.png">
+        <img class="avatar" src="../../../assets/images/avatar.png">
         <!--image placed here-->
       </ion-avatar>
       <ion-label>

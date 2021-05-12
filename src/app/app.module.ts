@@ -28,6 +28,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewVendorPage} from 'src/app/pages/super-admin/view-vendor/view-vendor.page';
 import { EditVendorPage } from './pages/super-admin/edit-vendor/edit-vendor.page';
+import { ViewShopPage } from './pages/vendor/view-shop/view-shop.page';
+import { EditShopPage } from './pages/vendor/edit-shop/edit-shop.page';
 
 // import { ActionsheetComponent } from './components/actionsheet/actionsheet.component';
 
@@ -38,10 +40,15 @@ import { EditVendorPage } from './pages/super-admin/edit-vendor/edit-vendor.page
 
   declarations: [AppComponent,
     EditVendorPage,
-    ViewVendorPage],
+    ViewVendorPage,
+    ViewShopPage,
+    EditShopPage
+  ],
   entryComponents: [
     EditVendorPage,
-    ViewVendorPage],
+    ViewVendorPage,
+    ViewShopPage,
+    EditShopPage],
 
   imports: [BrowserModule,
     // tslint:disable-next-line: deprecation

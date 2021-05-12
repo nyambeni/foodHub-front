@@ -116,6 +116,12 @@ export class SingupadminPage implements OnInit {
       console.log(data);
     });
 
+    
+    
+  
+   
+
+
 this.vendorReg.valueChanges.subscribe((data)=>{
   this.logValidationErrors(this.vendorReg);
 });

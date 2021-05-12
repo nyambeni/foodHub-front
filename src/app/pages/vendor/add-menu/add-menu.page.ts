@@ -16,7 +16,7 @@ export class AddMenuPage implements OnInit {
   product_description:string = '';
 
   product_price:string = '';
-  category:string = '';
+ 
   id: number;
 
   constructor(
@@ -35,7 +35,7 @@ export class AddMenuPage implements OnInit {
       this.product_name = data.product_name;
       this.product_description =this.product_description;
       this.product_price = data.product_price;
-      this.category = data.category;
+      
       console.log(data);
     });
 
@@ -68,7 +68,7 @@ export class AddMenuPage implements OnInit {
         product_name : this.product_name,
         product_description : this.product_description,
         product_price: this.product_price,
-        category: this.category,
+        
        
       };
       this.menuService.createMenus(body).subscribe(data => {

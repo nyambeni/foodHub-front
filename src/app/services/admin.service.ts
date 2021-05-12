@@ -15,10 +15,6 @@ export class AdminService { // class name
    reg_url_user = 'http://localhost:3000/restu_register';
   shop_url = 'http://localhost:3000/allrestuarant';
 
-  
-
-
-
 
   public getProfile()
   {
@@ -32,13 +28,13 @@ export class AdminService { // class name
 
 
   updateShop(shopData:any) {
-    return this.http.put(`${'http://localhost:3000/restu_update'}/${shopData.restuarant_id}`, shopData);
+    return this.http.put('http://localhost:3000/restu_update/' + shopData.restuarant_id , shopData);
   } 
     //delete shop for superadmin
 
   removeShop(id:any) {
     // const id: number = 1;
-    const _urldel = 'http://localhost:3000/restu_register/' + id;
+    const _urldel = 'http://localhost:3000/restuarant/' + id;
 
     return this.http.delete(_urldel);
   

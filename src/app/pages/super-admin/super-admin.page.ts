@@ -3,6 +3,7 @@ import { ModalController, AlertController, ToastController } from '@ionic/angula
 import {AdminService} from 'src/app/services/admin.service';
 import { ViewVendorPage } from './view-vendor/view-vendor.page';
 import { EditVendorPage } from './edit-vendor/edit-vendor.page';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-super-admin',
@@ -17,7 +18,8 @@ export class SuperAdminPage implements OnInit {
   constructor(private modalCtrl: ModalController,
               private _adminService: AdminService,
               private alertModal: AlertController,
-              private infoToast: ToastController) { }
+              private infoToast: ToastController,
+              private location: Location) { }
 
   ngOnInit() {
 
@@ -63,7 +65,7 @@ export class SuperAdminPage implements OnInit {
 
               //service called to delete shop
 
-              this._adminService.removeShop(shopData.id)
+              this._adminService.removeShop(shopData.restuarant_id)
               .subscribe(data => {
                 console.log(data);
               });
@@ -108,5 +110,10 @@ export class SuperAdminPage implements OnInit {
     return await modal.present();
 
   }
+
+  backButton() {
+    this.location.back();
+   }
+  
 
 }

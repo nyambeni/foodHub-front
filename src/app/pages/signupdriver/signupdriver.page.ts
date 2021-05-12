@@ -6,13 +6,12 @@ import {PostProvider } from '../../../providers/post-provider';
 import { ServiceproviderService } from 'src/app/services/serviceprovider.service';
 
 @Component({
-  selector: 'app-singupcust',
-  templateUrl: './singupcust.page.html',
-  styleUrls: ['./singupcust.page.scss'],
+  selector: 'app-signupdriver',
+  templateUrl: './signupdriver.page.html',
+  styleUrls: ['./signupdriver.page.scss'],
 })
-export class SingupcustPage implements OnInit {
-
-  firstname: string = "";
+export class SignupdriverPage implements OnInit {
+ firstname: string = "";
   surname: string = "";
   gender: string = "";
   // tslint:disable-next-line: variable-name
@@ -29,7 +28,6 @@ export class SingupcustPage implements OnInit {
   constructor(private route: Router, private location: Location, private actRoute: ActivatedRoute, private postPvdr: PostProvider) { }
 
   ngOnInit() {
-
     this.actRoute.params.subscribe((data: any) => {
 
       this.firstname = data.name;
@@ -39,11 +37,8 @@ export class SingupcustPage implements OnInit {
       this.addressInfo = data.addressI;
       this.gender = data.gen;
       this.confirm_password = data.confirm;
-
-    });
-
+       });
   }
-
   registerEnter() {
 
     return new Promise(resolve => {
@@ -92,8 +87,4 @@ export class SingupcustPage implements OnInit {
  backButton() {
   this.location.back();
  }
-
-
-
-
 }
