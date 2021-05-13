@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="#2F4F4F">
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios"></span>
+        <ion-icon name="md-close" showWhen="android,windows" slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Edit Your Shop Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header color="danger">
+      Edit Shop Information
+    </ion-list-header>
+  </ion-list>
+
+
+  <ion-button expand="full" color="success" (click)="update()" (click)="showToast(shopData)">Update</ion-button>
+
+</ion-content>

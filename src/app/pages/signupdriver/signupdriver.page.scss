@@ -1,0 +1,47 @@
+.card {
+    margin: 0 auto;
+
+    .header {
+        height: 180px;
+
+        .avatar {
+            width: 160px;
+            height: 80px;
+            position: relative;
+            margin: 0 auto;
+
+            img {
+                display: block;
+                border-radius: 50%;
+                position: absolute;
+                bottom: calc(-1*(80px + 4px));
+                border: 8px solid #A9A9A9;
+                background-color: #fff;
+            }
+        }
+    }
+}
+.card-body {
+    background-color: #ffffff;
+    padding: 30px;
+    height: calc(120vh - (200px + 56px));
+    overflow: hidden;
+
+    .user-meta {
+        padding-top: 20px;
+
+        .playername {
+            font-size: 24px;
+            font-weight: 600;
+            color: #303940;
+            height: calc(40vh - (200px + 56px));
+        }
+
+        .country {
+            font-size: 90%;
+            color: #A9A9A9;
+            text-transform: uppercase;
+            margin: 0 auto;
+        }
+    }
+}

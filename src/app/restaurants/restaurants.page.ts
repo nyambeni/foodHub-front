@@ -19,7 +19,7 @@ import { DataService } from '../services/data.service';
 export class RestaurantsPage implements OnInit {
 
 
-  constructor(private route: Router, private location: Location,) { }
+  constructor(private route: Router, private location: Location, private dataService: DataService) { }
 rest: any = [];
 
   ngOnInit() {
@@ -44,7 +44,8 @@ rest: any = [];
  }
  getRest() {
 
- 
+  return this.dataService.grest()
+  .subscribe(data => {this.rest = data ; console.log(data); });
  }
 
 }

@@ -8,22 +8,42 @@ import { tap, map } from 'rxjs/operators';
 })
 export class MenuService {
 
- 
+  /*private dish: Dish[];
+  private lastId: number = 20;
 
   constructor(private  http:HttpClient) { }
 
-  menu_get = 'http://localhost:3000/';
-menu_send = 'http://localhost:3000/new_products/';
+  getMenu():Observable<Dish[]>{
+    if (this.dish) {
+      return of(this.dish)
+    }else {
+      //fetch dish
+      return this.http.get<Dish[]>('./assets/dish.json')
+      .pipe(tap(dish => this.dish = dish));
+    }
+  }
 
- public getMenu()
-  {
-    return this.http.get<any>(this.menu_get);
+   getDishByCategory(category: string): Observable<Dish[]> {
+    return this.getDish().pipe(map(this.dish => this.dish.filter(dish => dish.category == category)));
   }
- 
-  
-  public createMenus(addmenu:any)
-  {
-    return this.http.post<any>(this. menu_send, addmenu, {});
+
+  getDishById(id: number): Observable<Dish[]> {
+    return this.getDish().pipe(map(this.dish => this.dish.find(dish => dish.id == id)));
   }
+
+  createDish(dish: Dish) {
+    dish.id = this.lastId + 1;
+    // increment lastId value
+    this.lastId = this.lastId + 1;
+    this.dish.push(dish);
+  }
+  updateContact(dish: Dish): Dish {
+    let itemIndex = this.dish.findIndex(item => item.id == dish.id);
+    this.dish[itemIndex] = dish;
+    return dish;
+  }
+  deleteContact(id: number): Dish {
+    let itemIndex = this.dish.findIndex(item => item.id == id);
+    return this.dish.splice(itemIndex, 1)[0];
+  }*/
 }
-

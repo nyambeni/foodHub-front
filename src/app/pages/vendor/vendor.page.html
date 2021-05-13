@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="#2F4F4F">
+    <ion-title>Welcome to your shop</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let shop of shops; let i=index">
+      <ion-avatar>
+        <!--add click for avatar-->
+        <img class="avatar" src="../../assets/images/avatar.png">
+        <!--image placed here-->
+      </ion-avatar>
+      <ion-label>
+        <h4>{{shop.name}}</h4>
+      </ion-label>
+      <ion-icon name="eye" color="success" (click)="_openModal(shop)" slot="end"></ion-icon>
+      <ion-icon name="create" color="danger" slot="end" (click)="_editModal(shop,i)"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
