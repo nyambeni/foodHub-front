@@ -119,7 +119,7 @@ export class HomePage implements OnInit {
           icon: 'help-circle-outline',
           handler: () => {
             console.log('admin clicked');
-            this.route.navigateByUrl('/vendor-admin');
+            this.route.navigateByUrl('/vendor');
           }
       }
       ,

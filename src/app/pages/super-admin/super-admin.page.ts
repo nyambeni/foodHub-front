@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { Chart } from 'chart.js';
+=======
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController, AlertController, ToastController } from '@ionic/angular';
+import {AdminService} from 'src/app/services/admin.service';
+import { ViewVendorPage } from './view-vendor/view-vendor.page';
+import { EditVendorPage } from './edit-vendor/edit-vendor.page';
+import { Location } from '@angular/common';
+>>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
 
 @Component({
   selector: 'app-super-admin',
@@ -21,6 +30,14 @@ export class SuperAdminPage implements OnInit {
     speed: 400,
   };
 
+<<<<<<< HEAD
+=======
+  constructor(private modalCtrl: ModalController,
+              private _adminService: AdminService,
+              private alertModal: AlertController,
+              private infoToast: ToastController,
+              private location: Location) { }
+>>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
 
   items = ['apple', 'banana', 'cherry', 'apple', 'banana', 'cherry'];
 
@@ -41,9 +58,18 @@ export class SuperAdminPage implements OnInit {
     console.log('my test works');
   }
 
+<<<<<<< HEAD
   delete() {
     console.log('my delete works');
   }
+=======
+              this._adminService.removeShop(shopData.restuarant_id)
+              .subscribe(data => {
+                console.log(data);
+              });
+          
+              // calling toast to show item has been deleted
+>>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
 
   ngOnInit() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
@@ -152,5 +178,10 @@ export class SuperAdminPage implements OnInit {
       this.segment = selectedIndex;
     });
   }
+
+  backButton() {
+    this.location.back();
+   }
+  
 
 }

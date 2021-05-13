@@ -29,17 +29,22 @@
           <ion-input type="text" [(ngModel)]="item_price" name ="item_price"></ion-input>
         </ion-item>
         
-        <ion-item>
+        <!-- <ion-item>
           Is item available ?  
+<<<<<<< HEAD
           <ion-toggle [(ngModel)]="itemStatus" name ="itemStatus" color="success"></ion-toggle>        
+=======
+          <ion-toggle [(ngModel)]="category" name="category" color="success" value="Active"></ion-toggle>        
+>>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
           <p *ngIf="itemStatus" name = "itemStatus">Active</p>
           <p *ngIf="!itemStatus"  name = "itemStatus">Inactive</p>
-        </ion-item>
+          
+        </ion-item> -->
 
-        <ion-item>
+        <!-- <ion-item>
           <ion-label position="fixed">Image</ion-label>
           <label class="control-label small" for="file_img">(jpg/png):</label> <input type="file" name="file_img">
-        </ion-item>
+        </ion-item> -->
         <ion-item>
           <ion-button type ="submit" color = "tertiary" *ngIf="!id" (click)="createdProses()">Add to menu</ion-button>
           <ion-button type ="submit" color = "tertiary" *ngIf="id>=1" (click)="updateProses()">Update</ion-button>

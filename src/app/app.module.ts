@@ -25,6 +25,14 @@ import { ServiceproviderService } from './services/serviceprovider.service';
 import { HttpModule } from '@angular/http';
 import { PostProvider } from '../providers/post-provider';
 import { IonicStorageModule } from '@ionic/storage';
+<<<<<<< HEAD
+=======
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewVendorPage} from 'src/app/pages/super-admin/view-vendor/view-vendor.page';
+import { EditVendorPage } from './pages/super-admin/edit-vendor/edit-vendor.page';
+import { ViewShopPage } from './pages/vendor/view-shop/view-shop.page';
+import { EditShopPage } from './pages/vendor/edit-shop/edit-shop.page';
+>>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
 
 // import { ActionsheetComponent } from './components/actionsheet/actionsheet.component';
 
@@ -33,8 +41,22 @@ import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
 
+<<<<<<< HEAD
   declarations: [AppComponent],
   entryComponents: [],
+=======
+  declarations: [AppComponent,
+    EditVendorPage,
+    ViewVendorPage,
+    ViewShopPage,
+    EditShopPage
+  ],
+  entryComponents: [
+    EditVendorPage,
+    ViewVendorPage,
+    ViewShopPage,
+    EditShopPage],
+>>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
 
   imports: [BrowserModule,
     // tslint:disable-next-line: deprecation

@@ -31,6 +31,39 @@ export class SingupadminPage implements OnInit {
     })
 
   ngOnInit() {
+<<<<<<< HEAD
+=======
+    
+    this.actRoute.params.subscribe((data: any) => {
+
+      this.restuarant_name = data.restuarant_name;
+      this.address = data.address;
+      this.email_address =this.email_address;
+      this.cellNo = data.cellNo;
+      this.password = data.password;
+      console.log(data);
+    });
+
+    
+    
+  
+   
+
+
+this.vendorReg.valueChanges.subscribe((data)=>{
+  this.logValidationErrors(this.vendorReg);
+});
+
+  }
+
+  getVendors()
+  {
+    this.adminService.createProfile(this.addVendors).subscribe((data: any)=>
+    {this.addVendors=data;
+    console.log(this.addVendors);
+
+    });
+>>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
 
   }
 
