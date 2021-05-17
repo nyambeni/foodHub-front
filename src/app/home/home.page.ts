@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   contentLoaded = false;
    // tslint:disable-next-line: max-line-length
    constructor(private route: Router, public actionSheetController: ActionSheetController,
-               private loadingCtrl: LoadingController, private dataService: DataService,
+               private loadingCtrl: LoadingController,
                private searchService: SearchService) {
                  setTimeout(() => {
                    this.contentLoaded = true;
@@ -104,14 +104,14 @@ export class HomePage implements OnInit {
         icon: 'help-circle-outline',
         handler: () => {
           console.log('Share clicked');
-          this.route.navigateByUrl('/profile');
+          this.route.navigateByUrl('/contact-us');
         }
       }, {
         text: 'About Us',
         icon: 'information-circle-outline',
         handler: () => {
           console.log('Share clicked');
-          this.route.navigateByUrl('/profile');
+          this.route.navigateByUrl('/about-us');
         }
       },
          {
@@ -143,12 +143,12 @@ export class HomePage implements OnInit {
      await actionSheet.present();
    }
 
-  public getRest() { // ive used the adminData here to test the connection. some of the variables should be change..pls dont touch
-    return this.dataService.adminService().subscribe((data: any) => {this.adminData = data; console.log(this.adminData); });
-  }
+  //public getRest() { // ive used the adminData here to test the connection. some of the variables should be change..pls dont touch
+    //return this.dataService.adminService().subscribe((data: any) => {this.adminData = data; console.log(this.adminData); });
+ // }
 
   ngOnInit() {
-    this.getRest();
+  //  this.getRest();
   }
   gotoRest() {
     this.route.navigateByUrl('/restaurants');

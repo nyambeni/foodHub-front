@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; // step 1
+import { Http, RequestOptions } from '@angular/http'; // step 1
+import {HttpClient,HttpHeaders,HttpParams} from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService { // class name
-  profile_url = 'http://localhost:6000/admin';  // step 2 variable
-  overview_url = 'http://localhost:6000/'; // check
 
+  
   constructor(private http: HttpClient) { }
+  login_url = 'http://localhost:3000/';
+  reg_url_shop = 'http://localhost:3000/restu_register';
+  reg_url_user = 'http://localhost:3000/cust_register';
+  shop_url = 'http://localhost:3000/allrestuarant';
+  reg_url_driver ='http://localhost:3000/driver_register';
 
-<<<<<<< HEAD
-  getProfile() { // this is a function
+  
 
-    return this.http.get(this.profile_url);
-=======
+
+
 
   public getProfile()
   {
@@ -29,7 +33,7 @@ export class AdminService { // class name
 
 
   updateShop(shopData:any) {
-    return this.http.put('http://localhost:3000/restu_update/' + shopData.restuarant_id , shopData);
+    return this.http.put(`${'http://localhost:3000/restu_update'}/${shopData.restuarant_id}`, shopData);
   } 
     //delete shop for superadmin
 
@@ -60,7 +64,9 @@ export class AdminService { // class name
    public createProfileUser(addven:any)
   {
     return this.http.post<any>(this. reg_url_user, addven, {});
->>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
+  }
+  public createProfileDriver(addven:any)
+  {
+    return this.http.post<any>(this. reg_url_driver, addven, {});
   }
 }
-// thats all you need inside the service.. now we are goin to use this service anywhere were it is required

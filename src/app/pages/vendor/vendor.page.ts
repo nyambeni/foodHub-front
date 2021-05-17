@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import {AdminService} from 'src/app/services/admin.service';
-import { EditShopPage } from './edit-shop/edit-shop.page';
-import { ViewShopPage } from './view-shop/view-shop.page';
-
-
+import { EditVendorPage } from './edit-vendor/edit-vendor.page';
+import { ViewVendorPage } from './view-vendor/view-vendor.page';
 
 @Component({
   selector: 'app-vendor',
@@ -36,7 +34,7 @@ export class VendorPage implements OnInit {
   async  _openModal(shop) {
 
     const modal = await this.modalCtrl.create({
-      component: ViewShopPage,
+      component: ViewVendorPage,
       componentProps: {
         shop: shop
       }
@@ -49,7 +47,7 @@ export class VendorPage implements OnInit {
   async  _editModal(shop, index) {
 
     const modal = await this.modalCtrl.create({
-      component: EditShopPage,
+      component: EditVendorPage,
       componentProps: {
         shop: shop
       }

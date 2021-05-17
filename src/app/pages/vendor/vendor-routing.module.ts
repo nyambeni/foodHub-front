@@ -9,12 +9,12 @@ const routes: Routes = [
     component: VendorPage
   },
   {
-    path: 'view-shop',
-    loadChildren: () => import('./view-shop/view-shop.module').then( m => m.ViewShopPageModule)
+    path: 'edit-vendor',
+    loadChildren: () => import('./edit-vendor/edit-vendor.module').then( m => m.EditVendorPageModule)
   },
   {
-    path: 'edit-shop',
-    loadChildren: () => import('./edit-shop/edit-shop.module').then( m => m.EditShopPageModule)
+    path: 'view-vendor',
+    loadChildren: () => import('./view-vendor/view-vendor.module').then( m => m.ViewVendorPageModule)
   }
 ];
 

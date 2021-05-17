@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
-import { Chart } from 'chart.js';
-=======
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import {AdminService} from 'src/app/services/admin.service';
 import { ViewVendorPage } from './view-vendor/view-vendor.page';
 import { EditVendorPage } from './edit-vendor/edit-vendor.page';
 import { Location } from '@angular/common';
->>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
 
 @Component({
   selector: 'app-super-admin',
@@ -17,166 +11,104 @@ import { Location } from '@angular/common';
   styleUrls: ['./super-admin.page.scss'],
 })
 export class SuperAdminPage implements OnInit {
-  doughnutChart: any;
-  lineChart: any;
 
 
-  constructor() { }
-  segment = 0;
-  selectedSlide: any;
-  sliderOptions = {
-    initialSlide : 0,
-    slidesPerView: 1,
-    speed: 400,
-  };
+  shopDatas:any = [];
 
-<<<<<<< HEAD
-=======
   constructor(private modalCtrl: ModalController,
               private _adminService: AdminService,
               private alertModal: AlertController,
               private infoToast: ToastController,
               private location: Location) { }
->>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
 
-  items = ['apple', 'banana', 'cherry', 'apple', 'banana', 'cherry'];
+  ngOnInit() {
 
-  @ViewChild('barCanvas',  { static: true }) barCanvas: ElementRef;
-  @ViewChild('doughnutCanvas',  { static: true }) doughnutCanvas: ElementRef;
-  @ViewChild('lineCanvas',  { static: true }) lineCanvas: ElementRef;
+    //calling service on initial load to show all shops in database
 
-
-  private barChart: Chart;
-
-
-  unread() {
-
-    console.log('my test works');
+     this._adminService.getShops()
+        .subscribe(data => this.shopDatas = data);
+        console.log(this.shopDatas);
 
   }
-  test() {
-    console.log('my test works');
-  }
 
-<<<<<<< HEAD
-  delete() {
-    console.log('my delete works');
+  
+
+  //toast to confirm deleted item
+
+  async showToast(shopDatas) {
+    const toast = await this.infoToast.create({
+      message: shopDatas.restuarant_name + ' has been deleted',
+      duration: 1500
+    });
+    toast.present();
   }
-=======
+  
+
+  //alert to confirm deletion of shop
+
+  async presentAlertConfirm(shopData) {
+    const alert = await this.alertModal.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to delete ' + shopData.restuarant_name + ' ?</strong>' ,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+
+              //service called to delete shop
+
               this._adminService.removeShop(shopData.restuarant_id)
               .subscribe(data => {
                 console.log(data);
               });
           
               // calling toast to show item has been deleted
->>>>>>> ea2e450c2aa66a21b9063ca99c9c34a56af9caa4
 
-  ngOnInit() {
-    this.barChart = new Chart(this.barCanvas.nativeElement, {
-      type: 'bar',
-      data: {
-        labels: ['Mamas Kitchen', 'Nkukhu Box', 'KFC', 'Chicken Licken', 'Nandos', 'Kasi Krumps'],
-        datasets: [
-          {
-            label: '# Based on Restaurant Order Volume',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
+              this.showToast(shopData);
           }
-        ]
-      },
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true
-              }
-            }
-          ]
         }
-      }
+      ]
     });
 
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-      type: 'doughnut',
-      data: {
-        labels: ['Spathlo', 'Skopo', 'Pap And Wors', 'Zinger Bucket', 'Marapo', 'Mogodu'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#FF6384', '#36A2EB', '#FFCE56']
-          }
-        ]
-      }
-    });
-
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', ],
-        datasets: [
-          {
-            label: 'System User Activity',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: 'rgba(75,192,192,0.4)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 45, 54, 72, 64, 88, 74],
-            spanGaps: false
-          }
-        ]
-      }
-    });
+    await alert.present();
   }
 
-  async segmentChanged() {
-    await this.selectedSlide.slideTo(this.segment);
+  //opens modal to create page to view shop
+
+  async  _openModal(shopData) {
+
+    const modal = await this.modalCtrl.create({
+      component: ViewVendorPage,
+      componentProps: {
+        shopData: shopData
+      }
+    });
+
+    return await modal.present();
 
   }
 
-  async slideChanged(slides: IonSlides) {
-    this.selectedSlide = slides;
-    slides.getActiveIndex().then(selectedIndex => {
-      this.segment = selectedIndex;
+  //opens modal to edit page to change shop attibutes
+
+  async  _editModal(shopData) {
+
+    const modal = await this.modalCtrl.create({
+      component: EditVendorPage,
+      componentProps: {
+        shopData: shopData
+      }
     });
+
+    return await modal.present();
+
   }
 
   backButton() {

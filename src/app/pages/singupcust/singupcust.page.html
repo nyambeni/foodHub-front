@@ -1,12 +1,13 @@
-<ion-header>
-  <ion-toolbar color = '#2F4F4F'>
-    <ion-icon name="arrow-black" (click)="backButton()"></ion-icon>
-    <ion-icon name="arrow-back-outline" size="large" (click)="backButton()"></ion-icon>
-    <ion-title>Customer Signup</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-header>
+    <ion-toolbar color='#2F4F4F'>
+      <ion-icon name="arrow-black" (click)="backButton()"></ion-icon>
+      <ion-icon name="arrow-back-outline" size="large" (click)="backButton()"></ion-icon>
+      <ion-title>Customer Signup</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
 
   <div class="card">
     <div class="header">
@@ -15,59 +16,126 @@
       </div>
     </div>
   </div>
+</ion-content>
 
-  <div class="card-body">
-    <div class="user-meta ion-text-center">
-      <h3 class="playername">Welcome</h3>
-      <h5 class="country">kasi food hub</h5>
+<ion-content>
 
-      <ion-item>
-        <ion-label position="floating">First Name</ion-label>
-        <ion-input type = "text" [(ngModel)]="firstname" name = "firstname"></ion-input>
-      </ion-item>
+  <form [formGroup]="customerReg" (ngSubmit)="logVendor()" method="POST">
+    <div class="card-body">
+      <div class="user-meta ion-text-center">
+        <h3 class="playername">Welcome</h3>
+        <h5 class="country">kasi food hub</h5>
 
-      <ion-item>
-        <ion-label position="floating">Last Name</ion-label>
-        <ion-input type= "text" [(ngModel)]="surname" name = "surname"></ion-input>
-      </ion-item>
+        <!-- <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+        </ion-item> -->
 
-      <ion-item>
-        <ion-label>Gender</ion-label>
-        <ion-select placeholder="Select One" name = "gender" [(ngModel)]="gender">
-          <ion-select-option value="f">Female</ion-select-option>
-          <ion-select-option value="m">Male</ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="name" formControlName="name" autocapitalize inputmode="text" placeholder="Enter Name"
+            class="form-control" (blur)="logValidationErrors()"></ion-input>
+        </ion-item>
+        <span class="help-block" *ngIf="formErrors.name">
+          <ion-icon style="color: red;" name="information-circle-outline"></ion-icon>
+          <small style="color: red">{{formErrors.name}}</small>
+        </span>
+        <!-- 
+        <ion-item>
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input type="text" [(ngModel)]="surname" name="surname"></ion-input>
+        </ion-item> -->
 
-      <ion-item>
-        <ion-label position="floating">Cellphone number</ion-label>
-        <ion-input  [(ngModel)]="cell_no" type="number" name = "cell_no"></ion-input>
-      </ion-item>
+        <ion-item lines="full">
+          <ion-input [(ngModel)]="surname" formControlName="surname" autocapitalize inputmode="text"
+            placeholder="Enter Surname" class="form-control" (blur)="logValidationErrors()"></ion-input>
+        </ion-item>
+        <span class="help-block" *ngIf="formErrors.surname">
+          <ion-icon style="color: red;" name="information-circle-outline"></ion-icon>
+          <small style="color: red">{{formErrors.surname}}</small>
+        </span>
 
-      <ion-item>
-        <ion-label position="floating" >Email Address</ion-label>
-        <ion-input type = "email" [(ngModel)]= "email_address" name = "email_address"></ion-input>
-      </ion-item>
+        <!-- 
+        <ion-item>
+          <ion-label position="floating">Cellphone number</ion-label>
+          <ion-input [(ngModel)]="cell_no" type="number" name="cell_no"></ion-input>
+        </ion-item> -->
 
-      <ion-item>
-        <ion-label position="floating">Address</ion-label>
-        <ion-input  [(ngModel)]= "addressInfo" type="text" name = "addressInfo"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="cell_no" formControlName="cell_no" autocapitalize inputmode="text"
+            placeholder="Enter Cellphone Number" class="form-control" (blur)="logValidationErrors()"></ion-input>
+        </ion-item>
+        <span class="help-block" *ngIf="formErrors.cell_no">
+          <ion-icon style="color: red;" name="information-circle-outline"></ion-icon>
+          <small style="color: red">{{formErrors.cell_no}}</small>
+        </span>
 
-      <ion-item>
-        <ion-label  position="floating">Password</ion-label>
-        <ion-input name = "passcode" [(ngModel)] = "passcode" type ="password"></ion-input>
-      </ion-item>
+        <!-- <ion-item>
+          <ion-label position="floating">Email Address</ion-label>
+          <ion-input type="email" [(ngModel)]="email_address" name="email_address"></ion-input>
+        </ion-item> -->
 
-      <ion-item>
-        <ion-label  position="floating">Confirm Password</ion-label>
-        <ion-input  [(ngModel)]="confirm_password" type ="password" name = "confirm_password"></ion-input>
-      </ion-item>
-            
+        <ion-item lines="full">
+          <ion-input [(ngModel)]="email_address" formControlName="email_address" autocapitalize inputmode="text"
+            placeholder="Enter Email Address" class="form-control" (blur)="logValidationErrors()"></ion-input>
+        </ion-item>
+        <span class="help-block" *ngIf="formErrors.email_address">
+          <ion-icon style="color: red;" name="information-circle-outline"></ion-icon>
+          <small style="color: red">{{formErrors.email_address}}</small>
+        </span>
+
+        <!-- <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input [(ngModel)]="address" type="text" name="address"></ion-input>
+        </ion-item> -->
+
+        <ion-item lines="full">
+          <ion-input [(ngModel)]="address" formControlName="address" autocapitalize inputmode="text"
+            placeholder="Enter Physical Address" class="form-control" (blur)="logValidationErrors()"></ion-input>
+        </ion-item>
+        <span class="help-block" *ngIf="formErrors.address">
+          <ion-icon style="color: red;" name="information-circle-outline"></ion-icon>
+          <small style="color: red">{{formErrors.address}}</small>
+        </span>
+
+        <!-- <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input name="password" [(ngModel)]="password" type="password"></ion-input>
+        </ion-item> -->
+
+        <div formGroupName="passwordGroup">
+
+          <ion-item lines="full">
+            <ion-input [(ngModel)]="password" formControlName="password" autocapitalize inputmode="text"
+              placeholder="Enter Password" class="form-control" (blur)="logValidationErrors()"></ion-input>
+          </ion-item>
+          <span class="help-block" *ngIf="formErrors.password">
+            <ion-icon style="color: red;" name="information-circle-outline"></ion-icon>
+            <small style="color: red">{{formErrors.password}}</small>
+          </span>
+
+          <!-- <ion-item>
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input [(ngModel)]="confirm_password" type="password" name="confirm_password"></ion-input>
+        </ion-item> -->
+
+          <ion-item lines="full">
+            <ion-input [(ngModel)]="confirm_password" formControlName="confirm_password" autocapitalize inputmode="text"
+              placeholder="Confirm Password" class="form-control" (blur)="logValidationErrors()"></ion-input>
+          </ion-item>
+          <span class="help-block" *ngIf="formErrors.confirm_password || formErrors.passwordGroup">
+            <ion-icon style="color: red;" name="information-circle-outline"></ion-icon>
+            <small style="color: red">
+              {{formErrors.confirm_password ? formErrors.confrim_password : formErrors.passwordGroup}}
+            </small>
+          </span>
+
+        </div>
+      </div>
+      <ion-button [disabled]="!customerReg.valid" type="submit" shape="round" (click)="registerEnter()">Register
+      </ion-button>
+      <ion-button shape="round" (click)="backButton()">Cancel</ion-button>
+
     </div>
-    <ion-button type = "submit" shape="round" (click)="registerEnter()" >Register</ion-button>
-    <ion-button shape = "round" (click)= "backButton()">Cancel</ion-button>
-  
-  </div>
 
+  </form>
 </ion-content>
