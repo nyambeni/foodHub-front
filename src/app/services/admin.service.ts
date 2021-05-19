@@ -14,6 +14,8 @@ export class AdminService { // class name
   reg_url_shop = 'http://localhost:3000/restu_register';
   reg_url_user = 'http://localhost:3000/cust_register';
   shop_url = 'http://localhost:3000/allrestuarant';
+  driver_url = 'http://localhost:3000/alldriver';
+  cust_url ='http://localhost:3000/all_customers';
   reg_url_driver ='http://localhost:3000/driver_register';
 
   
@@ -31,6 +33,13 @@ export class AdminService { // class name
     return this.http.get<any>(this.shop_url);
   }
 
+  public getCusts() {
+    return this.http.get<any>(this.cust_url);
+  }
+  
+  public getDrivers() {
+    return this.http.get<any>(this.driver_url);
+  }
 
   updateShop(shopData:any) {
     return this.http.put(`${'http://localhost:3000/restu_update'}/${shopData.restuarant_id}`, shopData);

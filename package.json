@@ -30,7 +30,7 @@
     "@ionic/storage": "^2.2.0",
     "animate.css": "^3.7.2",
     "capacitor": "^0.5.5",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "cordova": "^9.0.0",
     "cordova-plugin-stripe": "^1.5.3",
     "core-js": "^2.6.11",

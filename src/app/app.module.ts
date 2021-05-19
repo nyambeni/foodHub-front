@@ -26,8 +26,8 @@ import { HttpModule } from '@angular/http';
 import { PostProvider } from '../providers/post-provider';
 import { IonicStorageModule } from '@ionic/storage';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ViewVendorPage} from 'src/app/pages/super-admin/view-vendor/view-vendor.page';
-import { EditVendorPage } from './pages/super-admin/edit-vendor/edit-vendor.page';
+import { ViewVendorPage} from './pages/vendor/view-vendor/view-vendor.page';
+import { EditVendorPage } from './pages/vendor/edit-vendor/edit-vendor.page';
 
 // import { ActionsheetComponent } from './components/actionsheet/actionsheet.component';
 

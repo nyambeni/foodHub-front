@@ -16,6 +16,11 @@
     <ion-card *ngFor="let item of products">
         <ion-card-header>
           <ion-card-title color="secondary">{{item.name}}</ion-card-title>
+          <ion-avatar>
+            <!--add click for avatar-->
+            <img class="avatar" src="{{item.img}}">
+            <!--image placed here-->
+          </ion-avatar>
         </ion-card-header>
         <ion-card-content>
           <ion-row>

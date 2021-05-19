@@ -1,3 +1,4 @@
+
 <ion-header>
   <ion-toolbar color="#2F4F4F">
     <ion-icon name="arrow-back-outline" size="large" (click)="backButton()"></ion-icon>
@@ -6,6 +7,7 @@
 </ion-header>
 
 <ion-content>
+  <h1>Resturant Details</h1>
   <ion-list>
     <ion-item *ngFor="let shopData of shopDatas; let i=index">
       <ion-avatar>
@@ -21,4 +23,39 @@
       <ion-icon name="trash-outline" slot="end" (click)="presentAlertConfirm(shopData)"></ion-icon>
     </ion-item>
   </ion-list>
+  <ion-list>
+    <h1>Customer Details</h1>
+    <ion-item *ngFor="let custData of custDatas; let i=index">
+      <ion-avatar>
+        <!--add click for avatar-->
+        <img class="avatar" src="../../../assets/images/avatar.png">
+        <!--image placed here-->
+      </ion-avatar>
+      <ion-label>
+        <h4>{{custData.name}}</h4>
+        <h4>{{custData.surname}}</h4>
+      </ion-label>
+      <ion-icon name="eye" color="success" (click)="_opennModal(custData)" slot="end"></ion-icon>
+      <ion-icon name="create" color="danger" slot="end" (click)="_editsModal(custData)"></ion-icon>
+      <ion-icon name="trash-outline" slot="end" (click)="presentAlertConfirms(custData)"></ion-icon>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <h1>Driver Details</h1>
+    <ion-item *ngFor="let driverData of driverDatas; let i=index">
+      <ion-avatar>
+        <!--add click for avatar-->
+        <img class="avatar" src="../../../assets/images/avatar.png">
+        <!--image placed here-->
+      </ion-avatar>
+      <ion-label>
+        <h4>{{driverData.name}}</h4>
+        <h4>{{driverData.surname}}</h4>
+      </ion-label>
+      <ion-icon name="eye" color="success" (click)="_opennnModal(driverData)" slot="end"></ion-icon>
+      <ion-icon name="create" color="danger" slot="end" (click)="_editssModal(driverData)"></ion-icon>
+      <ion-icon name="trash-outline" slot="end" (click)="presentAlertConfirmss(driverData)"></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>
+

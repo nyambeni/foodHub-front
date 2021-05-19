@@ -14,6 +14,8 @@ export class SuperAdminPage implements OnInit {
 
 
   shopDatas:any = [];
+  custDatas:any = [];
+  driverDatas:any = [];
 
   constructor(private modalCtrl: ModalController,
               private _adminService: AdminService,
@@ -28,6 +30,14 @@ export class SuperAdminPage implements OnInit {
      this._adminService.getShops()
         .subscribe(data => this.shopDatas = data);
         console.log(this.shopDatas);
+
+        this._adminService.getCusts()
+        .subscribe(data => this.custDatas = data);
+        console.log(this.custDatas);
+
+        this._adminService.getDrivers()
+        .subscribe(data => this.driverDatas = data);
+        console.log(this.driverDatas);
 
   }
 
@@ -80,7 +90,74 @@ export class SuperAdminPage implements OnInit {
 
     await alert.present();
   }
+  async presentAlertConfirms(custData) {
+    const alert = await this.alertModal.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to delete ' + custData.name + ' ?</strong>' ,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
 
+              //service called to delete shop
+
+              this._adminService.removeShop(custData.name)
+              .subscribe(data => {
+                console.log(data);
+              });
+          
+              // calling toast to show item has been deleted
+
+              this.showToast(custData);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+  async presentAlertConfirmss(driverData) {
+    const alert = await this.alertModal.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: '<strong>Are you sure you want to delete ' + driverData.name + ' ?</strong>' ,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+
+              //service called to delete shop
+
+              this._adminService.removeShop(driverData.name)
+              .subscribe(data => {
+                console.log(data);
+              });
+          
+              // calling toast to show item has been deleted
+
+              this.showToast(driverData);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
   //opens modal to create page to view shop
 
   async  _openModal(shopData) {
@@ -96,6 +173,30 @@ export class SuperAdminPage implements OnInit {
 
   }
 
+  async  _opennModal(custData) {
+
+    const modal = await this.modalCtrl.create({
+      component: ViewVendorPage,
+      componentProps: {
+        custData: custData
+      }
+    });
+
+    return await modal.present();
+
+  }
+  async  _opennnModal(driverData) {
+
+    const modal = await this.modalCtrl.create({
+      component: ViewVendorPage,
+      componentProps: {
+        driverData: driverData
+      }
+    });
+
+    return await modal.present();
+
+  }
   //opens modal to edit page to change shop attibutes
 
   async  _editModal(shopData) {
@@ -110,7 +211,30 @@ export class SuperAdminPage implements OnInit {
     return await modal.present();
 
   }
+  async  _editsModal(custData) {
 
+    const modal = await this.modalCtrl.create({
+      component: EditVendorPage,
+      componentProps: {
+        custData: custData
+      }
+    });
+
+    return await modal.present();
+
+  }
+  async  _editssModal(driverData) {
+
+    const modal = await this.modalCtrl.create({
+      component: EditVendorPage,
+      componentProps: {
+        driverData: driverData
+      }
+    });
+
+    return await modal.present();
+
+  }
   backButton() {
     this.location.back();
    }
